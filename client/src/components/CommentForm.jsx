@@ -10,26 +10,24 @@ const CommentForm = ({ postId }) => {
   const picturePath = useSelector((state) => state.user.picturePath);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
+  const URL = useSelector((state) => state.URL);
 
   const handleCommentSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch(
-      `http://localhost:3001/posts/${postId}/comment`,
-      {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: loggedInUserId,
-          text: comment,
-          firstName: firstName,
-          picturePath: picturePath,
-        }),
-      }
-    );
-    
+    const response = await fetch(`${URL}/posts/${postId}/comment`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: loggedInUserId,
+        text: comment,
+        firstName: firstName,
+        picturePath: picturePath,
+      }),
+    });
+
     const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
     setComment("");
