@@ -4,6 +4,7 @@ import WidgetWrapper from "../../components/WidgetWrapper";
 import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 import UserImage from "../../components/UserImage";
+import { useSelector } from "react-redux";
 
 const CustomModalWidget = ({
   open,
@@ -19,10 +20,12 @@ const CustomModalWidget = ({
   };
   console.log(userId)
 
+  const URL = useSelector((state) => state.URL)
+
   const updateUser = async () => {
     try {
         const response = await fetch(
-            `http://localhost:3001/users/${userId}/update`,
+            `${URL}/users/${userId}/update`,
             {
               method: "POST",
               headers: {
