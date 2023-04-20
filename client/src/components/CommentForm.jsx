@@ -42,7 +42,7 @@ const CommentForm = ({ postId }) => {
         onChange={(e) => setComment(e.target.value)}
         sx={{ display: "flex", justifyContent: "center", gap: "1rem" }}
       ></TextField>
-      <Button type="submit">Post</Button>
+      <Button type="submit">Отпр.</Button>
     </form>
   );
 };
