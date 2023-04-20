@@ -10,7 +10,7 @@ import FlexBetween from "../../components/FlexBetween";
 import WidgetWrapper from "../../components/WidgetWrapper";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CustomModalWidget from "./CustomModalWidget";
 import VK from "./vk.svg"
 
@@ -86,10 +86,12 @@ console.log(vk, firstName)
         </FlexBetween>
         {modal === true ? (
           <>
-          <CustomModalWidget open={modal} onClose={handleModalClose} initialValues={{ firstName, lastName, location }} token={token} userId={userId} image={picturePath}/>
+          {isProfile ? <></> : <><CustomModalWidget open={modal} onClose={handleModalClose} initialValues={{ firstName, lastName, location }} token={token} userId={userId} image={picturePath} />
           <Button>
           <ManageAccountsOutlined />
           </Button>
+          </>
+}
           </>
         ) : (
           <Button onClick={() => setModal(true)}>
