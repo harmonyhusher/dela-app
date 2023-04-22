@@ -2,7 +2,6 @@ import {
   ChatBubbleOutlineOutlined,
   FavoriteBorderOutlined,
   FavoriteOutlined,
-  ShareOutlined,
 } from "@mui/icons-material";
 import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
 import FlexBetween from "../../components/FlexBetween";
@@ -40,7 +39,6 @@ const PostWidget = ({
   const URL = useSelector((state) => state.URL);
   const date = new Date(createdAt);
   const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-  const navigate = useNavigate()
 
   const patchLike = async () => {
     const response = await fetch(`${URL}/posts/${postId}/like`, {
@@ -64,6 +62,7 @@ const PostWidget = ({
         name={name}
         subtitle={location}
         userPicturePath={userPicturePath}
+        userId={userId}
       />
       <Typography color={main} sx={{ mt: "1rem" }}>
         {description}
