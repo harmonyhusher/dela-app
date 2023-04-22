@@ -27,7 +27,7 @@ const registerSchema = yup.object().shape({
   location: yup.string().required("Обязательное поле"),
   occupation: yup.string().required("Обязательное поле"),
   picture: yup.string().required("Обязательное поле"),
-  vk: yup.string().url().required("Обязательное поле"),
+  vk: yup.string().url(),
 });
 
 const loginSchema = yup.object().shape({

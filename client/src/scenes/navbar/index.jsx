@@ -46,6 +46,7 @@ const Navbar = ({ picturePath }) => {
   const token = useSelector((state) => state.token);
   const URL = useSelector((state) => state.URL);
   const users = useSelector((state) => state.users);
+  const navigte = useNavigate()
 
   const fullName = `${user.firstName} ${user.lastName}`;
 
@@ -80,8 +81,6 @@ const Navbar = ({ picturePath }) => {
     }
     dispatch(setUsers({ users: data }));
   };
-
-  useEffect(() => {}, [])
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -126,6 +125,10 @@ const Navbar = ({ picturePath }) => {
               height="40px"
               padding="0.1rem 1.5rem"
               key={user.id}
+              sx={{"&:hover": {
+                color: dark,
+                cursor: "pointer",
+              },}}
             >
               <Box
                 sx={{
@@ -133,6 +136,7 @@ const Navbar = ({ picturePath }) => {
                   alignItems: "center",
                   gap: "1rem",
                 }}
+                onClick={(e) => navigte(`/profile/${user._id}`)}
               >
                 <UserImage image={user.picturePath}/>
                 <Typography variant="h6">

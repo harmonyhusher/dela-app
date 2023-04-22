@@ -7,8 +7,8 @@ const initialState = {
   posts: [],
   city: null,
   users: [],
-  // URL: "https://affairssoical.onrender.com",
-  URL: "http://localhost:3001"
+  URL: "https://affairssoical.onrender.com",
+  isLoading: null
 };
 
 export const authSlice = createSlice({
@@ -53,9 +53,12 @@ export const authSlice = createSlice({
     setUsers: (state, action) => {
       state.users = action.payload.users;
     },
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload.isLoading
+    }
   },
 });
-export const { setMode, setLogin, setLogout, setFriends, setPost, setPosts, setUsers} =
+export const { setMode, setLogin, setLogout, setFriends, setPost, setPosts, setUsers, setIsLoading} =
   authSlice.actions;
 export default authSlice.reducer;
 
