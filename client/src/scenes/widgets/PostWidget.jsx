@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "../../state";
 import CommentForm from "../../components/CommentForm";
 import UserCommentImage from "components/UserCommentImage";
+import { useNavigate } from "react-router-dom";
 
 const PostWidget = ({
   postId,
@@ -24,6 +25,8 @@ const PostWidget = ({
   userPicturePath,
   likes,
   comments,
+  createdAt,
+  userId
 }) => {
   const [isComments, setIsComments] = useState(false);
   const dispatch = useDispatch();
@@ -34,7 +37,10 @@ const PostWidget = ({
   const { palette } = useTheme();
   const main = palette.neutral.main;
   const primary = palette.primary.main;
-  const URL = useSelector((state) => state.URL)
+  const URL = useSelector((state) => state.URL);
+  const date = new Date(createdAt);
+  const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+  const navigate = useNavigate()
 
   const patchLike = async () => {
     const response = await fetch(`${URL}/posts/${postId}/like`, {
@@ -48,6 +54,8 @@ const PostWidget = ({
     const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
   };
+
+  console.log(postUserId)
 
   return (
     <WidgetWrapper m="2rem 0">
@@ -90,35 +98,51 @@ const PostWidget = ({
           </FlexBetween>
         </FlexBetween>
 
-        <IconButton>
-          <ShareOutlined />
-        </IconButton>
+        <Typography color={main} sx={{ mt: "1rem" }}>
+          {formattedDate}
+        </Typography>
       </FlexBetween>
       {isComments && (
         <Box mt="0.5rem">
-          {comments.map((comments, i) => (
+          {comments.map((comment, i) => (
             <Box key={`${name}-${i}`}>
               <Divider />
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  p: "1rem 1rem 0rem 0rem",
-                }}
-              >
-                <UserCommentImage
-                  image={comments.picturePath}
-                  alt={comments.firstName}
-                />
-                <Typography
-                  sx={{ fontWeight: "bold", ml: "0.5rem", mb: "1.5rem" }}
+              <FlexBetween sx={{ p: "0" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    p: "0rem 0rem 0rem 0rem",
+                  }}
                 >
-                  {comments.firstName}
+                  <UserCommentImage
+                    image={comment.picturePath}
+                    alt={comment.firstName}
+                  />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      p: "0rem 0rem 0rem 0.5rem",
+                    }}
+                  >
+                    <Typography sx={{ p: "0.5rem 0 0 0" }}>
+                      {comment.firstName}
+                    </Typography>
+                    {/* <Typography sx={{ ml: "3.5rem", p: "0rem 0rem 1rem 0rem" }}> */}
+                    <Typography
+                      color={main}
+                      sx={{ p: "0.5rem 0rem 0rem 0rem" }}
+                    >
+                      {comment.text}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Typography color={main}>
+                  {new Date(comment.createdAt).toLocaleString()}
                 </Typography>
-              </Box>
-              <Typography sx={{ ml: "3.5rem", p: "0rem 0rem 1rem 0rem" }}>
-                {comments.text}
-              </Typography>
+              </FlexBetween>
             </Box>
           ))}
           <CommentForm postId={postId} />

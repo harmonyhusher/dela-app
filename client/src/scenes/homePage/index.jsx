@@ -17,15 +17,18 @@ const HomePage = () => {
       <Navbar />
       <Box
         width="100%"
+        margin="0 auto"
         padding="2rem 6%"
         display={isNonMobileScreens ? "flex" : "block"}
+        flexDirection={isNonMobileScreens ? "row" : "column"}
+        alignItems={isNonMobileScreens ? "stretch" : "center"}
         gap="0.5rem"
         justifyContent="space-between"
       >
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           <UserWidget userId={_id} picturePath={picturePath} />
           <Box m="2rem 0">
-          <FriendListWidget userId={_id} />
+            <FriendListWidget userId={_id} />
           </Box>
         </Box>
         <Box

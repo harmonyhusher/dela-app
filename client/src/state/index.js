@@ -7,7 +7,8 @@ const initialState = {
   posts: [],
   city: null,
   users: [],
-  URL: "https://affairssoical.onrender.com"
+  // URL: "https://affairssoical.onrender.com",
+  URL: "http://localhost:3001"
 };
 
 export const authSlice = createSlice({

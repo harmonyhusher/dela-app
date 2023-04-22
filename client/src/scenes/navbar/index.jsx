@@ -9,6 +9,7 @@ import {
   FormControl,
   useTheme,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 import {
   Search,
@@ -24,7 +25,9 @@ import { setMode, setLogout } from "../../state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "../../components/FlexBetween";
 import NotificationButton from "components/NotificationButton";
-// import SearchForm from "components/SearchForm";
+import { setUsers } from "../../state";
+import UserImage from "components/UserImage";
+import { useEffect } from "react";
 
 const Navbar = ({ picturePath }) => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
@@ -32,14 +35,53 @@ const Navbar = ({ picturePath }) => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
   const alt = theme.palette.background.alt;
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [isSearchDisabled, setIsSearchDisabled] = useState(true);
+  const token = useSelector((state) => state.token);
+  const URL = useSelector((state) => state.URL);
+  const users = useSelector((state) => state.users);
 
   const fullName = `${user.firstName} ${user.lastName}`;
+
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    const [newFirstName, newLastName] = value.split(" ");
+    setFirstName(newFirstName);
+    setLastName(newLastName);
+    setIsSearchDisabled(value.trim() === '');
+    if (value === "") {
+      dispatch(setUsers({ users: [] }));
+    }
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    let searchUrl = `${URL}/users/search?firstName=${firstName}&lastName=${lastName}`;
+    let response = await fetch(searchUrl, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    let data = await response.json();
+
+    // если данные пустые и фамилия задана, то выполняем перезапрос только с lastName
+    if (data.length === 0 && lastName !== "") {
+      searchUrl = `${URL}/users/search?firstName=${lastName}&lastName=`;
+      response = await fetch(searchUrl, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      data = await response.json();
+    }
+    dispatch(setUsers({ users: data }));
+  };
+
+  useEffect(() => {}, [])
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -58,21 +100,50 @@ const Navbar = ({ picturePath }) => {
         >
           ДЕЛА
         </Typography>
-        {isNonMobileScreens && (
+
           <FlexBetween
             backgroundColor={neutralLight}
             borderRadius="9px"
             gap="3rem"
             padding="0.1rem 1.5rem"
           >
-            {/* <SearchForm /> */}
-            <InputBase placeholder="В разработке..." />
-            <IconButton>
-              {/* <SearchForm /> */}
-              <Search placeholder="В разработке..." />
-            </IconButton>
+            <form onSubmit={handleSearch}>
+              <InputBase
+                placeholder="Найти пользователя"
+                onChange={handleInputChange}
+                name="search"
+              />
+              <IconButton type="submit" onClick={handleSearch} disabled={isSearchDisabled}>
+                <Search placeholder="В разработке..." />
+              </IconButton>
+            </form>
           </FlexBetween>
-        )}
+          {users?.map((user) => (
+            <FlexBetween
+              backgroundColor={neutralLight}
+              borderRadius="9px"
+              width="250px"
+              height="40px"
+              padding="0.1rem 1.5rem"
+              key={user.id}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                <UserImage image={user.picturePath}/>
+                <Typography variant="h6">
+                  {user.firstName} {user.lastName}
+                </Typography>
+                <Typography color={dark}>
+                {user.location}
+              </Typography>
+              </Box>
+            </FlexBetween>
+          ))}
       </FlexBetween>
 
       {/* DESKTOP NAV */}

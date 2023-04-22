@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../../state";
 import AudioRecorder from "./AudioRecording";
 import {useMediaQuery} from "@mui/material";
+import { Send } from "@mui/icons-material";
 import { useEffect } from "react";
 
 const MyPostWidget = ({ picturePath }) => {
@@ -181,7 +182,7 @@ const MyPostWidget = ({ picturePath }) => {
             borderRadius: "3rem",
           }}
         >
-          Пост
+          <Send/>
         </Button>
       </FlexBetween>
     </WidgetWrapper>
