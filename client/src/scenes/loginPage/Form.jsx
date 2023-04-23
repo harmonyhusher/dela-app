@@ -65,6 +65,7 @@ const Form = () => {
   const isLoading = useSelector((state) => state.isLoading)
 
   const register = async (values, onSubmitProps) => {
+    dispatch(setIsLoading({isLoading: true}))
     // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
@@ -85,6 +86,7 @@ const Form = () => {
     if (savedUser) {
       setPageType("login");
     }
+    dispatch(setIsLoading({isLoading: false}))
   };
 
   const login = async (values, onSubmitProps) => {
