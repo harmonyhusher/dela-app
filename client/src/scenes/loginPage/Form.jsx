@@ -13,11 +13,12 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setLogin } from "../../state";
+import { setIsLoading, setLogin } from "../../state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "../../components/FlexBetween";
 import citiesJSON from "../../cities.json";
 import { useSelector } from "react-redux";
+import Loader from "components/Loader";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("Обязательное поле"),
@@ -61,6 +62,7 @@ const Form = () => {
   const isRegister = pageType === "register";
   const cities = citiesJSON.map((city) => city.name);
   const URL = useSelector((state) => state.URL)
+  const isLoading = useSelector((state) => state.isLoading)
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -86,6 +88,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
+    dispatch(setIsLoading({isLoading: true}))
     const loggedInResponse = await fetch(`${URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -102,6 +105,7 @@ const Form = () => {
       );
       navigate("/home");
     }
+    dispatch(setIsLoading({isLoading: false}))
   };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
@@ -298,6 +302,7 @@ const Form = () => {
             >
               {isLogin ? "Войти" : "Зарегестрироваться"}
             </Button>
+            {isLoading ? <Loader/> : <></>}
             <Typography
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");

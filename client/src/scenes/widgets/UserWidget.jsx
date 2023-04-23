@@ -50,7 +50,7 @@ const UserWidget = ({ userId, picturePath, isProfile }) => {
     return null;
   }
 
-  if (isLoading === true) {
+  if (isLoading) {
     return <Loader />;
   }
 
