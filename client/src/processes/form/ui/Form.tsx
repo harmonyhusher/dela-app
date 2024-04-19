@@ -1,18 +1,17 @@
 /* eslint-disable react/no-children-prop */
-import React from "react";
+import React, { FormEventHandler } from "react";
 import cs from "./Form.module.scss";
 import { Input } from "@/src/shared/ui/input";
 import { Button } from "@/src/shared/ui/button";
 import { useUnit } from "effector-react";
 import {
   $email,
-  $error,
+  $formDisabled,
   $password,
-  $pending,
   emailChanged,
+  formSubmitted,
   passwordChanged,
-  signInFx,
-} from "../model/store";
+} from "../model/model";
 
 export interface IAuthForm {
   email: string;
@@ -20,29 +19,51 @@ export interface IAuthForm {
 }
 
 const Form = () => {
-  const [email, password, submitForm, loading] = useUnit([
+  const [email, password, submitForm, disabled] = useUnit([
     $email,
     $password,
-    signInFx,
-    $pending,
-    $error,
+    formSubmitted,
+    $formDisabled,
   ]);
+
+  const onFormSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
+    submitForm();
+  };
+
+  const onEmailChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      emailChanged(e.target.value);
+    },
+    []
+  );
+
+  const onPasswordChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      passwordChanged(e.target.value);
+    },
+    []
+  );
+
+  console.log(email, password, disabled);
   return (
-    <form className={cs.container} onSubmit={submitForm}>
+    <form className={cs.container} onSubmit={onFormSubmit}>
       <Input
         value={email}
-        onChange={(e) => emailChanged(e.target.value)}
+        onChange={onEmailChange}
         id="email"
         children={"Почта"}
+        // disabled={disabled}
         type="email"
       />
       <Input
         value={password}
-        onChange={(e) => passwordChanged(e.target.value)}
+        onChange={onPasswordChange}
         id="password"
+        // disabled={disabled}
         children={"Пароль"}
       />
-      <Button type="submit" children={"Войти"} disabled={loading} />
+      <Button type="submit" children={"Войти"} disabled={disabled} />
     </form>
   );
 };
