@@ -1,7 +1,7 @@
 .input {
     height: 28px;
     padding: 12px 8px 12px 12px;
-    border-radius: 16px;
+    border-radius: 12px;
     border: 1px solid #CED2DA;
     outline: none;
 }
@@ -9,6 +9,8 @@
 .label {
     width: 100%;
     display: flex;
+    font-weight: 500;
     flex-direction: column;
     gap: 8px;
+    font-size: 18px;
 }
