@@ -3,6 +3,7 @@ export interface IPost {
   firstName: string;
   lastName: string;
   location?: string;
+  date?: string;
   description?: string;
   likes: Map<string, boolean>;
   comments: Comment[];

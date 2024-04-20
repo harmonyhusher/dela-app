@@ -1,5 +1,5 @@
 import { AuthProvider } from "@/src/app/providers/AuthProvider";
-import "./styles/globals.scss";
+import "../styles/globals.scss";
 
 export const metadata = {
   title: "Next.js",

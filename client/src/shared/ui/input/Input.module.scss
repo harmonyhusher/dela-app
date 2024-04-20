@@ -1,7 +1,16 @@
+.container {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .input {
     min-height: 52px;
     padding: 12px;
     border-radius: 10px;
+    width: 100%;
     border: 1px solid #545455;
     background-color: rgb(56, 56, 56);
     color: white;
@@ -9,8 +18,15 @@
     font-size: 18px;
 
     &:focus {
-        border: 1px solid #8e8e91;
+        border: 1px solid #6d6d6e;
     }
+}
+
+.input_container {
+    cursor: text;
+    width: 100%;
+    height: 100%;
+    background: transparent;
 }
 
 .label {
@@ -18,9 +34,5 @@
     display: flex;
     font-weight: 500;
     flex-direction: column;
-    font-size: 20px;
-}
-
-.span {
-    width: 100% !important;
+    font-size: 18px;
 }

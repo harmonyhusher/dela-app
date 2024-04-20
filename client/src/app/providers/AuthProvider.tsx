@@ -1,7 +1,9 @@
+"use client";
+
 import { useUnit } from "effector-react";
 import React from "react";
 import { $isAuth } from "../model";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { urls } from "../lib/urls";
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   const [isAuth] = useUnit([$isAuth]);
@@ -9,9 +11,9 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
 
   React.useEffect(() => {
     if (!isAuth) {
-      router.replace(urls.login);
+      router.replace(urls.auth);
     }
-  }, []);
+  }, [isAuth]);
 
-  return <>{isAuth && children}</>;
+  return <>{children}</>;
 };

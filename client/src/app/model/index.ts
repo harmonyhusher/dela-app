@@ -9,7 +9,7 @@ const tokenExpired = createEvent();
 
 $token.on(tokenRecieved, (_, token) => token).reset(tokenExpired);
 
-export const $isAuth = and($token);
+const $isAuth = and($token);
 
 persist({
   store: $token,
@@ -17,3 +17,5 @@ persist({
   serialize: (v) => v,
   deserialize: (v) => v,
 });
+
+export { tokenExpired, tokenRecieved, $isAuth, $token };

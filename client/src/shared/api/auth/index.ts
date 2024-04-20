@@ -7,7 +7,12 @@ type SignIn = {
   password: string;
 };
 
-type SignInError = {
+type SignInSuccess = {
+  token: string;
+  user: IUser;
+};
+
+export type SignInError = {
   msg: "Invalid credentials. " | "User does not exist. ";
 };
 
@@ -18,12 +23,14 @@ type SignUp = {
   password: string;
 };
 
-async function signIn(
-  params: SignIn
-): Promise<AxiosResponse<IUser, SignInError>> {
-  return api.post("/auth/login", params).catch((e) => {
-    throw (e.response.data as SignInError).msg;
-  });
+async function signIn(params: SignIn): Promise<AxiosResponse<SignInSuccess>> {
+  try {
+    const response = await api.post("/auth/login", params);
+    return response.data; // Возвращаем успешный ответ
+  } catch (error: any) {
+    const errorResponse = error.response.data as SignInError;
+    throw errorResponse.msg;
+  }
 }
 
 async function signUp(params: SignUp) {

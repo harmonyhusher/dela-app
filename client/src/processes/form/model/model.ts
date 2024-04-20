@@ -1,4 +1,5 @@
-import { signIn } from "@/src/shared/api/auth";
+import { $token, tokenExpired, tokenRecieved } from "@/src/app/model";
+import { SignInError, signIn } from "@/src/shared/api/auth";
 import {
   attach,
   createEffect,
@@ -14,6 +15,7 @@ const $password = createStore("");
 const emailChanged = createEvent<string>();
 const passwordChanged = createEvent<string>();
 const formSubmitted = createEvent();
+const setError = createEvent<Error | null>();
 
 const signInFx = createEffect(signIn);
 
@@ -29,13 +31,23 @@ const localSingInFx = attach({ effect: signInFx }); //локальная коп�
 sample({
   clock: formSubmitted,
   source: { email: $email, password: $password },
-  // filter: signInFx.pending.map((pending) => !pending), обычный вид записи
   filter: not($formDisabled), // применение патронума
   target: localSingInFx,
 });
 
-// $error.reset(formSubmitted);
-$error.on(localSingInFx.failData, (_, error) => error);
+sample({
+  clock: localSingInFx.doneData,
+  fn: (clk) => clk.data.token,
+  target: tokenRecieved,
+});
+
+sample({
+  clock: localSingInFx.fail,
+  fn: (clk) => clk.error,
+  target: setError,
+});
+
+$error.on(setError, (_, error) => error);
 
 export {
   $email,
