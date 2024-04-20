@@ -1,16 +1,26 @@
 .input {
-    height: 28px;
-    padding: 12px 8px 12px 12px;
-    border-radius: 12px;
-    border: 1px solid #CED2DA;
+    min-height: 52px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #545455;
+    background-color: rgb(56, 56, 56);
+    color: white;
     outline: none;
+    font-size: 18px;
+
+    &:focus {
+        border: 1px solid #8e8e91;
+    }
 }
 
 .label {
-    width: 100%;
+    width: min-content;
     display: flex;
     font-weight: 500;
     flex-direction: column;
-    gap: 8px;
-    font-size: 18px;
+    font-size: 20px;
+}
+
+.span {
+    width: 100% !important;
 }

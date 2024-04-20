@@ -34,13 +34,14 @@ sample({
   target: localSingInFx,
 });
 
-$error.reset(formSubmitted);
+// $error.reset(formSubmitted);
 $error.on(localSingInFx.failData, (_, error) => error);
 
 export {
   $email,
   $password,
   $formDisabled,
+  $error,
   emailChanged,
   formSubmitted,
   passwordChanged,

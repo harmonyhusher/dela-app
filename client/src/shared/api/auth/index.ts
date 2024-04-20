@@ -8,7 +8,7 @@ type SignIn = {
 };
 
 type SignInError = {
-  msg: "Invalid credentials. ";
+  msg: "Invalid credentials. " | "User does not exist. ";
 };
 
 type SignUp = {

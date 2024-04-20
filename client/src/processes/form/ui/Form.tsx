@@ -6,6 +6,7 @@ import { Button } from "@/src/shared/ui/button";
 import { useUnit } from "effector-react";
 import {
   $email,
+  $error,
   $formDisabled,
   $password,
   emailChanged,
@@ -19,11 +20,12 @@ export interface IAuthForm {
 }
 
 const Form = () => {
-  const [email, password, submitForm, disabled] = useUnit([
+  const [email, password, submitForm, disabled, error] = useUnit([
     $email,
     $password,
     formSubmitted,
     $formDisabled,
+    $error,
   ]);
 
   const onFormSubmit: FormEventHandler = (e) => {
@@ -45,7 +47,7 @@ const Form = () => {
     []
   );
 
-  console.log(email, password, disabled);
+  console.log(email, password, error);
   return (
     <form className={cs.container} onSubmit={onFormSubmit}>
       <Input

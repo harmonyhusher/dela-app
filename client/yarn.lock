@@ -708,6 +708,11 @@ effector-react@^23.2.0:
   dependencies:
     use-sync-external-store "^1.0.0"
 
+effector-storage@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/effector-storage/-/effector-storage-7.1.0.tgz#0efcf0a2c2c6b2f6f98c9faaead00d74a664e8a5"
+  integrity sha512-l5+RR48g7ZKUldElHnJSkzPwiMeyoO7D+C/xM6g4MVHpM9Waty8HMuIas+udSXYE1Tf9i8xm/AGBhdRrMm2FIA==
+
 effector@^23.2.0:
   version "23.2.0"
   resolved "https://registry.npmjs.org/effector/-/effector-23.2.0.tgz"
@@ -2008,11 +2013,6 @@ react-dom@^18:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
-
-react-hook-form@^7.51.3:
-  version "7.51.3"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.51.3.tgz"
-  integrity sha512-cvJ/wbHdhYx8aviSWh28w9ImjmVsb5Y05n1+FW786vEZQJV5STNM0pW6ujS+oiBecb0ARBxJFyAnXj9+GHXACQ==
 
 react-is@^16.13.1:
   version "16.13.1"
