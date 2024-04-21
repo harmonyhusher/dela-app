@@ -1,6 +1,6 @@
-import { Open_Sans as MainFont } from "next/font/google";
+import { Open_Sans as MainFont } from 'next/font/google';
 
 export const mainFont = MainFont({
-  subsets: ["latin"],
-  weight: ["400", "700", "500"],
+  subsets: ['latin'],
+  weight: ['400', '700', '500'],
 });

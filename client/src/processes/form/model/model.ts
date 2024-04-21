@@ -1,16 +1,10 @@
-import { $token, tokenExpired, tokenRecieved } from "@/src/app/model";
-import { SignInError, signIn } from "@/src/shared/api/auth";
-import {
-  attach,
-  createEffect,
-  createEvent,
-  createStore,
-  sample,
-} from "effector";
-import { not, or } from "patronum";
+import { $token, tokenExpired, tokenRecieved } from '@/src/app/model';
+import { signIn, SignInError } from '@/src/shared/api/auth';
+import { attach, createEffect, createEvent, createStore, sample } from 'effector';
+import { not, or } from 'patronum';
 
-const $email = createStore("");
-const $password = createStore("");
+const $email = createStore('');
+const $password = createStore('');
 
 const emailChanged = createEvent<string>();
 const passwordChanged = createEvent<string>();
@@ -49,13 +43,4 @@ sample({
 
 $error.on(setError, (_, error) => error);
 
-export {
-  $email,
-  $password,
-  $formDisabled,
-  $error,
-  emailChanged,
-  formSubmitted,
-  passwordChanged,
-  signInFx,
-};
+export { $email, $password, $formDisabled, $error, emailChanged, formSubmitted, passwordChanged, signInFx };

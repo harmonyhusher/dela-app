@@ -1,28 +1,27 @@
-import { IPost } from "@/interfaces/entities/Post.interface";
-import React from "react";
-import cs from "./post.module.scss";
-import cn from "classnames";
-import { mainFont } from "@/src/shared/fonts/MainFont";
+import React from 'react';
 
-export const Post = ({
-  firstName,
-  lastName,
-  userId,
-  description,
-  comments,
-  likes,
-  date,
-}: Partial<IPost>) => {
+import { mainFont } from '@/fonts/MainFont';
+import { IPost } from '@/interfaces/entities/Post.interface';
+import { Container } from '@/ui/container/container';
+import { Flex } from '@/ui/flex';
+import { Comments } from '@/widgets/comments';
+import cn from 'classnames';
+
+import { Avatar } from './{view}/avatar/avatar';
+import { Name } from './{view}/name/name';
+import cs from './post.module.scss';
+
+export const Post = ({ firstName, lastName, userId, description, comments, likes, date }: Partial<IPost>) => {
   return (
-    <div className={cn(cs.container, mainFont.className)}>
-      <section>
-        <div>
-          {firstName?.[0]}
-          {lastName?.[0]}
-        </div>
-        <p>{firstName && lastName && firstName + lastName}</p>
-      </section>
-      <span>{description}</span>
+    <div>
+      <Container className={cn(cs.container, mainFont.className)}>
+        <Flex className={cs.name_container}>
+          <Avatar firstName={firstName || ''} lastName={lastName || ''} userId={userId as string} />
+          <Name firstName={firstName || ''} lastName={lastName || ''} />
+        </Flex>
+        <span>{description}</span>
+      </Container>
+      <Comments comments={comments || []} />
     </div>
   );
 };

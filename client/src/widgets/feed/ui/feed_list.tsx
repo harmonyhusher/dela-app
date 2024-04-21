@@ -1,7 +1,10 @@
-import { useUnit } from "effector-react";
-import { feedListQuery } from "../model/model";
-import { Post } from "@/src/entities/post/ui/post";
-import React, { useId } from "react";
+import React, { useId } from 'react';
+
+import { Post } from '@/entities/post/ui/post';
+import { useUnit } from 'effector-react';
+
+import { feedListQuery } from '../model/model';
+import cs from './list.module.scss';
 
 export const FeedList = () => {
   const { data: feedList, pending, error } = useUnit(feedListQuery);
@@ -18,10 +21,10 @@ export const FeedList = () => {
   if (error) {
     return <div>Ошибка</div>;
   }
-  console.log(feedList)
+  console.log(feedList);
 
   return (
-    <div>
+    <div className={cs.container}>
       {feedList?.map((item) => {
         return <Post key={id} {...item} />;
       })}

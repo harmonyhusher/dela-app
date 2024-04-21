@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { useUnit } from "effector-react";
-import React from "react";
-import { $isAuth } from "../model";
-import { useRouter } from "next/navigation";
-import { urls } from "../lib/urls";
+import React from 'react';
+
+import { useUnit } from 'effector-react';
+import { useRouter } from 'next/navigation';
+
+import { urls } from '../lib/urls';
+import { $isAuth } from '../model';
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   const [isAuth] = useUnit([$isAuth]);
   const router = useRouter();

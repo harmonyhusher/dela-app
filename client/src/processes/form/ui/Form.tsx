@@ -1,18 +1,12 @@
 /* eslint-disable react/no-children-prop */
-import React, { FormEventHandler } from "react";
-import cs from "./Form.module.scss";
-import { Input } from "@/src/shared/ui/input";
-import { Button } from "@/src/shared/ui/button";
-import { useUnit } from "effector-react";
-import {
-  $email,
-  $error,
-  $formDisabled,
-  $password,
-  emailChanged,
-  formSubmitted,
-  passwordChanged,
-} from "../model/model";
+import React, { FormEventHandler } from 'react';
+
+import { Button } from '@/src/shared/ui/button';
+import { Input } from '@/src/shared/ui/input';
+import { useUnit } from 'effector-react';
+
+import { $email, $error, $formDisabled, $password, emailChanged, formSubmitted, passwordChanged } from '../model/model';
+import cs from './Form.module.scss';
 
 export interface IAuthForm {
   email: string;
@@ -33,39 +27,33 @@ const Form = () => {
     submitForm();
   };
 
-  const onEmailChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      emailChanged(e.target.value);
-    },
-    []
-  );
+  const onEmailChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    emailChanged(e.target.value);
+  }, []);
 
-  const onPasswordChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      passwordChanged(e.target.value);
-    },
-    []
-  );
+  const onPasswordChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    passwordChanged(e.target.value);
+  }, []);
 
   console.log(email, password, error);
   return (
     <form className={cs.container} onSubmit={onFormSubmit}>
       <Input
-        value={email}
-        onChange={onEmailChange}
+        children={'Почта'}
         id="email"
-        children={"Почта"}
-        // disabled={disabled}
+        onChange={onEmailChange}
         type="email"
+        // disabled={disabled}
+        value={email}
       />
       <Input
-        value={password}
-        onChange={onPasswordChange}
+        children={'Пароль'}
         id="password"
+        onChange={onPasswordChange}
         // disabled={disabled}
-        children={"Пароль"}
+        value={password}
       />
-      <Button type="submit" children={"Войти"} disabled={disabled} />
+      <Button children={'Войти'} disabled={disabled} type="submit" />
     </form>
   );
 };

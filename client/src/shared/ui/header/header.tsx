@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import cs from "./Header.module.scss";
+import cs from './Header.module.scss';
 
-type Props = {};
-
-const header = (props: Props) => {
+export const Header = () => {
   return <div>header</div>;
 };

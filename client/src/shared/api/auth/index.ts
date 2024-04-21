@@ -1,6 +1,7 @@
-import { AxiosResponse } from "axios";
-import { api } from "../api";
-import { IUser } from "../../interfaces/entities/User.interface";
+import { AxiosResponse } from 'axios';
+
+import { IUser } from '../../interfaces/entities/User.interface';
+import { api } from '../api';
 
 type SignIn = {
   email: string;
@@ -13,7 +14,7 @@ type SignInSuccess = {
 };
 
 export type SignInError = {
-  msg: "Invalid credentials. " | "User does not exist. ";
+  msg: 'Invalid credentials. ' | 'User does not exist. ';
 };
 
 type SignUp = {
@@ -24,17 +25,12 @@ type SignUp = {
 };
 
 async function signIn(params: SignIn): Promise<AxiosResponse<SignInSuccess>> {
-  try {
-    const response = await api.post("/auth/login", params);
-    return response.data; // Возвращаем успешный ответ
-  } catch (error: any) {
-    const errorResponse = error.response.data as SignInError;
-    throw errorResponse.msg;
-  }
+  const response = await api.post('/auth/login', params);
+  return response.data;
 }
 
 async function signUp(params: SignUp) {
-  return api.post("/register", params).catch((e) => {
+  return api.post('/register', params).catch((e) => {
     throw e.response.data;
   });
 }

@@ -1,9 +1,14 @@
 .container {
-    width: 100%;
-    border: 1px solid #303030;
-    background-color: #181818;
-    border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    padding: 12px;
+    border-bottom: 0px !important;
+    border-radius: 12px 12px 0px 0px !important;
+}
+
+.name_container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
