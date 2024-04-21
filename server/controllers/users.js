@@ -42,11 +42,11 @@ export const getUserFriends = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const { firstName, lastName, location, picturePath } = req.body;
+    const { firstName, lastName, picturePath } = req.body;
     const { id } = req.params;
     const user = await User.findByIdAndUpdate(
       id,
-      { firstName, lastName, location, picturePath },
+      { firstName, lastName, picturePath },
       { new: true }
     );
     res.status(200).json(user);
