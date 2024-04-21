@@ -1,0 +1,1 @@
+export { authRoute, Auth } from './page'
