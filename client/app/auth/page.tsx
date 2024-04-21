@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
-import Form from "@/src/processes/form/ui/Form";
-import React from "react";
+import Form from '@/processes/form/ui/Form';
 
 export default function Auth() {
   return <Form />;

@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import '@/styles/globals.scss';
 
 const Page = () => {
-  return <div>page</div>;
+  return <div></div>;
 };
 
 export default Page;

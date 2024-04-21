@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { FeedPage } from "@/src/{pages}/feed/feed";
-import React from "react";
+import { FeedPage } from '@/pages/feed';
+import '@/styles/globals.scss';
 
 export default function Feed() {
   return <FeedPage />;

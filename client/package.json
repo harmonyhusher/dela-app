@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev && node ../server/index.js",
+    "dev": "next dev",
     "build": "next build -p 3000",
     "start": "next start",
     "lint": "eslint src/**/*.{ts,tsx}",

@@ -14,6 +14,8 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   React.useEffect(() => {
     if (!isAuth) {
       router.replace(urls.auth);
+    } else {
+      router.replace(urls.feed);
     }
   }, [isAuth]);
 
