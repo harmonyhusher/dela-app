@@ -1,6 +1,8 @@
-import { createEvent, createStore, split } from "effector";
+import { redirect } from "atomic-router";
+import { createEvent, createStore, sample, split } from "effector";
 import { persist } from "effector-storage/local";
 import { and } from "patronum";
+import { routes } from "../routes";
 
 const $token = createStore("");
 

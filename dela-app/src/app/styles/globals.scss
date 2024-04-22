@@ -8,7 +8,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  transition: all 0.2s ease;
+  // transition: all 0.05s ease;
 }
 
 html,
@@ -16,6 +16,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  margin: 0 auto;
   font-family: 'Poppins', sans-serif;
 }
 

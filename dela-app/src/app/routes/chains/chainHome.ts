@@ -6,11 +6,11 @@ import {
   redirect,
 } from "atomic-router";
 import { createEvent, sample } from "effector";
-import { $isAuth } from "../model";
+import { $isAuth } from "../../model";
 import { not } from "patronum";
-import { routes } from "./router";
+import { routes } from "../router";
 
-export function chainAuthorized<Params extends RouteParams>(
+export function chainHome<Params extends RouteParams>(
   route: RouteInstance<Params>
 ) {
   const checkSessionStarted = createEvent<RouteParamsAndQuery<Params>>();
@@ -30,10 +30,14 @@ export function chainAuthorized<Params extends RouteParams>(
     route: routes.auth.auth,
   });
 
+  redirect({
+    clock: isAuthorized,
+    route: routes.private.feed,
+  });
+
   return chainRoute({
     route,
     beforeOpen: checkSessionStarted,
-    openOn: [isAuthorized],
-    cancelOn: [isNotAuthorized],
+    openOn: route.$isOpened,
   });
 }
