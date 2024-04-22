@@ -1,7 +1,7 @@
 import { createHistoryRouter, createRoute } from "atomic-router";
 import { sample } from "effector";
-import { initializeApp } from "./init";
 import { createBrowserHistory } from "history";
+import { initializeApp } from "../model";
 
 export const routes = {
     auth: {

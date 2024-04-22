@@ -1,0 +1,17 @@
+.container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    user-select: none;
+    font-size: px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.small {
+    width: 30px;
+    height: 30px;
+}

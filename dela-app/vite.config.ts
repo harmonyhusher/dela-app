@@ -1,17 +1,40 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import alias from '@rollup/plugin-alias'
-import { resolve } from 'path';
-
-const projectRootDir = resolve(__dirname);
-console.log(projectRootDir)
+import { defineConfig, loadEnv } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import alias from "@rollup/plugin-alias";
+import path, { resolve } from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  resolve: {
-    alias: {
-      "@": resolve(projectRootDir, "dela-app/src"),
+// export default defineConfig(({command, mode}) => {
+//   resolve: {
+//     alias: {
+//       "@src": path.resolve(__dirname, "src"),
+//       "@shared": path.resolve(__dirname, "src/shared"),
+//       "@pages": path.resolve(__dirname, "src/pages"),
+//       "@widgets": path.resolve(__dirname, "src/widgets"),
+//       "@processes": path.resolve(__dirname, "src/processes"),
+//       "@app": path.resolve(__dirname, "src/app"),
+//     },
+//   },
+//   plugins: [react(), alias()],
+// });
+
+export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  return {
+    define: {
+      "process.env.API_URL": JSON.stringify(env.API_URL),
     },
-  },
-  plugins: [react(), alias()],
-})
+    
+    resolve: {
+      alias: {
+        "@src": path.resolve(__dirname, "src"),
+        "@shared": path.resolve(__dirname, "src/shared"),
+        "@pages": path.resolve(__dirname, "src/pages"),
+        "@widgets": path.resolve(__dirname, "src/widgets"),
+        "@processes": path.resolve(__dirname, "src/processes"),
+        "@app": path.resolve(__dirname, "src/app"),
+      },
+    },
+    plugins: [react(), alias()],
+  };
+});
