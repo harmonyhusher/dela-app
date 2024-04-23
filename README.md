@@ -6,7 +6,7 @@
 - Effector
 - SASS/SCSS
 
-## Package.json
+## Скрипты
 - `yarn dev` - Запуск клиента в режиме разработки
 - `yarn lint` - Запуск линтера на клиенте
 - `node index.js` - запуск сервера
