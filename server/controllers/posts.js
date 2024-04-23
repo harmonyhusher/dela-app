@@ -25,6 +25,7 @@ export const createPost = async (req, res) => {
     res.status(409).json({ message: err.message });
   }
 };
+
 /* READ */
 export const getFeedPosts = async (req, res) => {
   try {
