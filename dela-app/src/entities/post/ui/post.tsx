@@ -2,13 +2,15 @@ import React from "react";
 
 import cn from "classnames";
 
-import { Avatar } from "./{view}/avatar/avatar";
-import { Name } from "./{view}/name/name";
 import cs from "./post.module.scss";
 import { IPost } from "@src/shared/interfaces/entities/Post.interface";
 import { Container } from "@src/shared/ui/container";
 import { Flex } from "@src/shared/ui/flex";
 import { Comments } from "@src/widgets/comments";
+import { CommentPost } from "@src/processes/comment_post";
+import { Wrapper } from "@src/shared/ui/wrapper";
+import { Avatar } from "@src/widgets/avatar/avatar";
+import { Name } from "@src/widgets/name/name";
 
 export const Post = ({
   firstName,
@@ -20,7 +22,7 @@ export const Post = ({
   createdAt,
 }: Partial<IPost>) => {
   return (
-    <div>
+    <Wrapper className={cn(cs.wrapper)}>
       <Container className={cn(cs.container)}>
         <Flex className={cs.name_container}>
           <Avatar
@@ -31,8 +33,9 @@ export const Post = ({
           <Name firstName={firstName || ""} lastName={lastName || ""} />
         </Flex>
         <span>{description}</span>
+        {/* <Comments comments={comments || []} /> */}
       </Container>
-      <Comments comments={comments || []} />
-    </div>
+      <CommentPost />
+    </Wrapper>
   );
 };

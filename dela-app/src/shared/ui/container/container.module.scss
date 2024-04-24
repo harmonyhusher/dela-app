@@ -4,3 +4,13 @@
     background-color: #181818;
     border-radius: 12px;
 }
+
+.top {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.bottom {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}

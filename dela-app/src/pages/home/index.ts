@@ -4,7 +4,7 @@ import { Home } from "./page";
 
 export const currentRoute = routes.home;
 
-export const FeedRoute = {
+export const HomeRoute = {
   view: Home,
   route: chainHome(currentRoute),
 };

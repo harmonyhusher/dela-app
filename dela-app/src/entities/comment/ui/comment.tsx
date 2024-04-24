@@ -2,10 +2,10 @@ import React from 'react';
 
 
 import cs from './comment.module.scss';
-import { Avatar } from '@src/entities/post/ui/{view}/avatar/avatar';
 import { Direction } from '@src/shared/interfaces/ui/Flex.interfaces';
 import { Container } from '@src/shared/ui/container';
 import { Flex } from '@src/shared/ui/flex';
+import { Avatar } from '@src/widgets/avatar/avatar';
 
 type Props = {
   firstName: string;

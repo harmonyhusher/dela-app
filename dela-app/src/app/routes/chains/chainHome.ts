@@ -38,6 +38,6 @@ export function chainHome<Params extends RouteParams>(
   return chainRoute({
     route,
     beforeOpen: checkSessionStarted,
-    openOn: route.$isOpened,
+    openOn: [route.$isOpened],
   });
 }

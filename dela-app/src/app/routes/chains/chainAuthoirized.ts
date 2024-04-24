@@ -7,8 +7,9 @@ import {
 } from "atomic-router";
 import { createEvent, sample } from "effector";
 import { $isAuth } from "../../model";
-import { not } from "patronum";
+import { and, not, or } from "patronum";
 import { routes } from "../router";
+import { $userData } from "@src/entities/user/api/query";
 
 export function chainAuthorized<Params extends RouteParams>(
   route: RouteInstance<Params>
@@ -28,6 +29,12 @@ export function chainAuthorized<Params extends RouteParams>(
   redirect({
     clock: isNotAuthorized,
     route: routes.auth.auth,
+  });
+
+  sample({
+    clock: checkSessionStarted,
+    filter: or($isAuth, $userData.$succeeded),
+    target: $userData.start,
   });
 
   return chainRoute({

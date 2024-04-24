@@ -1,0 +1,17 @@
+@import '@src/app/styles/globals.scss';
+
+.container {
+    min-width: 350px !important;
+    height: min-content;
+    padding: var(--basic-padding);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: var(--basic-padding);
+    gap: 12px
+}
+
+.name {
+    gap: 12px;
+}
