@@ -1,28 +1,35 @@
 import { createMutation } from "@farfetched/core";
 import { api } from "@src/shared/api";
-import {
-  combine,
-  createEffect,
-  createEvent,
-  createStore,
-  sample,
-} from "effector";
-import { and, not } from "patronum";
+import { IPost } from "@src/shared/interfaces/entities/Post.interface";
+
+import { createEvent, sample } from "effector";
+
+interface IComment {
+  id: number;
+  comment: string;
+}
 
 export const commentPost = createMutation({
-  handler: async ({ id, comment }) => {
-    const response = await api.patch(`posts/${id}/comment`, { text: comment });
+  handler: async ({ id, comment }: IComment) => {
+    const response = await api.patch<IPost>(`posts/${id}/comment`, {
+      text: comment,
+    });
     return response.data;
   },
 });
 
-const sendComment = createEvent<{ id: number; comment: string }>();
-
-const sendCommentFx = createEffect(commentPost.start);
+const sendComment = createEvent<IComment>();
+const updateSinglePost = createEvent<IPost>();
 
 sample({
   clock: sendComment,
-  target: [sendCommentFx],
+  target: commentPost.start,
+});
+
+sample({
+  clock: commentPost.finished.success,
+  fn: (clk) => clk.result,
+  target: updateSinglePost,
 });
 
 export { sendComment };

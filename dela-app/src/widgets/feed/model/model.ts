@@ -1,10 +1,17 @@
 import { cache, createCacheAdapter, createQuery } from "@farfetched/core";
 import { router, routes } from "@src/app/routes";
+import { commentPost } from "@src/entities/post/model/model";
 import { currentRoute } from "@src/pages/feed";
 import { api } from "@src/shared/api";
 import { IPost } from "@src/shared/interfaces/entities/Post.interface";
 import { chainRoute } from "atomic-router";
-import { combine, createEffect, createStore, sample } from "effector";
+import {
+  combine,
+  createEffect,
+  createEvent,
+  createStore,
+  sample,
+} from "effector";
 import { debounce } from "patronum";
 
 // /* READ */
@@ -29,6 +36,8 @@ export const feedQuery = createQuery({
   },
 });
 
+const updateSinglePost = createEvent<IPost>();
+
 const getFeedFx = createEffect(feedQuery.start);
 
 debounce({
@@ -41,3 +50,5 @@ chainRoute({
   route: routes.private.feed,
   beforeOpen: getFeedFx,
 });
+
+export { updateSinglePost };
