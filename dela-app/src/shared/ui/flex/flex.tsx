@@ -10,7 +10,6 @@ export const Flex = ({
   className,
   style,
 }: React.PropsWithChildren<Props>) => {
-  console.log(align, direction);
   return (
     <div
       className={cn(cs.container, cs[align], [cs.direction], className)}

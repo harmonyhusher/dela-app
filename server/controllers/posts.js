@@ -75,16 +75,15 @@ export const likePost = async (req, res) => {
 export const commentPost = async (req, res) => {
   try {
     const { id } = req.params;
-    const { text, firstName, lastName, userId } = req.body;
-    // const { text, firstName, lastName, picturePath, userId } = req.body;
+    const { text } = req.body;
+    const { firstName, lastName, userId } = req.user;
     const post = await Post.findById(id);
     const comment = { userId, text, firstName, lastName };
-    // const comment = { userId, text, firstName, lastName, picturePath }; // include firstName and picturePath here
     post.comments.push(comment);
     const updatedPost = await Post.findByIdAndUpdate(
       id,
       { comments: post.comments },
-      { new: true } // pass options object as a single argument
+      { new: true }
     );
     res.status(200).json(updatedPost);
   } catch (err) {

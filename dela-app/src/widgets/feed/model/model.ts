@@ -11,10 +11,6 @@ import { debounce } from "patronum";
 // router.get("/feed", verifyToken, getFeedPosts);
 // router.get("/:userId/posts", getUserPosts);
 
-// /* UPDATE */
-// router.patch("/:id/like", verifyToken, likePost);
-// router.patch("/:id/comment", verifyToken, commentPost);
-
 const $page = createStore(0);
 const $search = createStore("");
 

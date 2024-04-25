@@ -2,9 +2,20 @@
 
 .container {
     display: flex;
+    position: relative;
     width: 100%;
     box-sizing: border-box;
     gap: 8px;
+}
+
+.icon {
+    position: absolute;
+    right: 16px;
+    top: 27%;
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: 0px;
 }
 
 .input {

@@ -20,7 +20,7 @@ export const User = () => {
   return (
     <Container
       className={cs.container}
-      borders={user && user.friends.length > 0 ? Borders.Top : null}
+      borders={user && user.friends.length > 0 ? Borders.Top : Borders.All}
     >
       <Flex align={Align.Center} className={cs.name}>
         <Avatar

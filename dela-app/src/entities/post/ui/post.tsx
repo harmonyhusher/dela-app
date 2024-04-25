@@ -20,7 +20,11 @@ export const Post = ({
   comments,
   likes,
   createdAt,
+  _id,
 }: Partial<IPost>) => {
+  const [value, setValue] = React.useState("");
+
+  console.log(_id, value);
   return (
     <Wrapper className={cn(cs.wrapper)}>
       <Container className={cn(cs.container)}>
@@ -33,9 +37,9 @@ export const Post = ({
           <Name firstName={firstName || ""} lastName={lastName || ""} />
         </Flex>
         <span>{description}</span>
-        {/* <Comments comments={comments || []} /> */}
       </Container>
-      <CommentPost />
+      <Comments comments={comments || []} />
+      <CommentPost id={_id as number} set={setValue} value={value} />
     </Wrapper>
   );
 };

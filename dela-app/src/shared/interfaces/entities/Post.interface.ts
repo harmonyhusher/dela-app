@@ -1,4 +1,5 @@
 export interface IPost {
+  _id: number;
   userId: string;
   firstName: string;
   lastName: string;
