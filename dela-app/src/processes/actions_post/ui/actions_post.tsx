@@ -7,6 +7,9 @@ import { Container } from "@src/shared/ui/container";
 import { Borders } from "@src/shared/ui/container/container";
 import { Flex } from "@src/shared/ui/flex";
 
+import cs from "./actions_post.module.scss";
+import classNames from "classnames";
+
 export const ActionsPost = ({
   isLiked,
   data,
@@ -21,13 +24,17 @@ export const ActionsPost = ({
       <Flex>
         {isLiked ? (
           <IconHeartFilled
+            className={
+              isLiked ? classNames(cs.like_button, cs.liked) : undefined
+            }
             onClick={() => click(data)}
-            style={{ cursor: "pointer" }}
           />
         ) : (
           <IconHeart
             onClick={() => click(data)}
-            style={{ cursor: "pointer" }}
+            className={
+              isLiked ? undefined : classNames(cs.like_button, cs.unliked)
+            }
           />
         )}
       </Flex>
