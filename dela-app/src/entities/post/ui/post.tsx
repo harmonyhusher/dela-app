@@ -14,6 +14,8 @@ import { Name } from "@src/widgets/name/name";
 import { useUnit } from "effector-react";
 import { $userData } from "@src/entities/user/api/query";
 import { ActionsPost } from "@src/processes/actions_post";
+import { formatDateTime } from "@src/shared/helpers/formatDate";
+import { Paragraph } from "@src/shared/ui/paragraph/paragraph";
 
 export const Post = ({
   firstName,
@@ -38,6 +40,9 @@ export const Post = ({
             userId={userId as string}
           />
           <Name firstName={firstName || ""} lastName={lastName || ""} />
+          <Paragraph>
+            {createdAt && formatDateTime(new Date(createdAt))}
+          </Paragraph>
         </Flex>
         <span>{description}</span>
       </Container>

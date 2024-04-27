@@ -9,6 +9,7 @@ import cs from "./user.module.scss";
 import { Paragraph } from "@src/shared/ui/paragraph/paragraph";
 import { Borders } from "@src/shared/ui/container/container";
 import { Avatar } from "@src/widgets/avatar/avatar";
+import { Friends } from "@src/widgets/friends";
 
 export const User = () => {
   const { data: user, pending } = useUnit($userData);
@@ -18,24 +19,27 @@ export const User = () => {
   }
 
   return (
-    <Container
-      className={cs.container}
-      borders={user && user.friends.length > 0 ? Borders.Top : Borders.All}
-    >
-      <Flex align={Align.Center} className={cs.name}>
-        <Avatar
-          userId={user?._id}
-          firstName={user?.firstName as string}
-          lastName={user?.lastName as string}
-        />
-        <Paragraph>
-          {user?.firstName} {user?.lastName}
-        </Paragraph>
-      </Flex>
-      <Flex>
-        <IconMapPin />
-        <Paragraph>{user?.location}</Paragraph>
-      </Flex>
-    </Container>
+    <div>
+      <Container
+        className={cs.container}
+        borders={user && user.friends.length > 0 ? Borders.Top : Borders.All}
+      >
+        <Flex align={Align.Center} className={cs.name}>
+          <Avatar
+            userId={user?._id}
+            firstName={user?.firstName as string}
+            lastName={user?.lastName as string}
+          />
+          <Paragraph>
+            {user?.firstName} {user?.lastName}
+          </Paragraph>
+        </Flex>
+        <Flex>
+          <IconMapPin />
+          <Paragraph>{user?.location}</Paragraph>
+        </Flex>
+      </Container>
+      {user?.friends && <Friends />}
+    </div>
   );
 };
