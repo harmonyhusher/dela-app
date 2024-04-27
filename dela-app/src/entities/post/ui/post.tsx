@@ -16,6 +16,8 @@ import { $userData } from "@src/entities/user/api/query";
 import { ActionsPost } from "@src/processes/actions_post";
 import { formatDateTime } from "@src/shared/helpers/formatDate";
 import { Paragraph } from "@src/shared/ui/paragraph/paragraph";
+import { Link } from "atomic-router-react";
+import { routes } from "@src/app/routes";
 
 export const Post = ({
   firstName,
@@ -28,19 +30,30 @@ export const Post = ({
   _id,
 }: Partial<IPost>) => {
   const [value, setValue] = React.useState("");
-  const { data: user } = useUnit($userData);
-  console.log(likes, "s");
+  const { data: user, pending } = useUnit($userData);
+  if (!user) {
+    return <></>;
+  }
   return (
     <Wrapper className={cn(cs.wrapper)}>
       <Container className={cn(cs.container)}>
         <Flex className={cs.name_container}>
-          <Avatar
+          {_id && (
+            <Link to={routes.private.user} params={{ userId: String(_id) }}>
+              <Avatar
+                firstName={firstName || ""}
+                lastName={lastName || ""}
+                userId={userId as string}
+                isLoading={pending}
+              />
+            </Link>
+          )}
+          <Name
             firstName={firstName || ""}
             lastName={lastName || ""}
-            userId={userId as string}
+            isLoading={pending}
           />
-          <Name firstName={firstName || ""} lastName={lastName || ""} />
-          <Paragraph>
+          <Paragraph isLoading={pending}>
             {createdAt && formatDateTime(new Date(createdAt))}
           </Paragraph>
         </Flex>
@@ -51,6 +64,7 @@ export const Post = ({
         isLiked={
           likes ? (user?._id !== undefined ? user?._id in likes : false) : false
         }
+        isLoading={pending}
         amount={Object.keys(likes || {}).length}
       />
       <Comments comments={comments || []} />

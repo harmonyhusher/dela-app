@@ -21,10 +21,12 @@ export const Container = ({
   className,
   padding = Padding.sm,
   borders = Borders.All,
+  isLoading,
 }: React.PropsWithChildren<{
   className?: string;
   borders?: Borders;
   padding?: Padding;
+  isLoading?: boolean;
 }>) => {
   return (
     <div
@@ -32,7 +34,8 @@ export const Container = ({
         cs.container,
         className,
         cs[borders as Borders],
-        cs[padding as Padding]
+        cs[padding as Padding],
+        isLoading && cs.isLoading
       )}
     >
       {children}

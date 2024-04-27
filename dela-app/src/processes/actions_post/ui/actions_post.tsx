@@ -14,15 +14,17 @@ export const ActionsPost = ({
   isLiked,
   data,
   amount,
+  isLoading,
 }: {
   isLiked: boolean;
   data: ILike;
   amount: number;
+  isLoading?: boolean;
 }) => {
   const [click] = useUnit([clickLike]);
 
   return (
-    <Container borders={Borders.NoRadius}>
+    <Container borders={Borders.NoRadius} isLoading={isLoading}>
       <Flex justify={Justify.SpaceBetween} align={Align.Center}>
         {isLiked ? (
           <IconHeartFilled

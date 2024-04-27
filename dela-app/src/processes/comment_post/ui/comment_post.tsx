@@ -17,7 +17,6 @@ export const CommentPost = ({
   set: (value: string) => void;
 }) => {
   const [send] = useUnit([sendComment]);
-  console.log(value.length > 0 && id, value);
   return (
     <Container borders={Borders.Bottom} className={cs.container}>
       <Avatar firstName="Д" lastName="С" />

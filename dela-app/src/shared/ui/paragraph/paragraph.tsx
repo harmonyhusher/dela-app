@@ -14,6 +14,7 @@ export interface TitleProps
   className?: string;
   size?: SizeVariant;
   tag?: React.ElementType;
+  isLoading?: boolean;
 }
 
 export const Paragraph = ({
@@ -21,12 +22,18 @@ export const Paragraph = ({
   className,
   children,
   size,
+  isLoading,
   tag: Tag = "p",
   ...props
 }: TitleProps) => {
   return (
     <Tag
-      className={cn(cs.title, className, size && cs[size as SizeVariant])}
+      className={cn(
+        cs.title,
+        className,
+        size && cs[size as SizeVariant],
+        isLoading && cs.isLoading
+      )}
       {...props}
     >
       {title || children}
