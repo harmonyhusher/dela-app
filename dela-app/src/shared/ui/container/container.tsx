@@ -1,19 +1,19 @@
-import cn from "classnames";
+import cn from 'classnames';
 
-import cs from "./container.module.scss";
+import cs from './container.module.scss';
 
 export enum Borders {
-  Top = "top",
-  Bottom = "bottom",
-  Null = "null",
-  All = "all",
-  NoRadius = "no_radius",
+  Top = 'top',
+  Bottom = 'bottom',
+  Null = 'null',
+  All = 'all',
+  NoRadius = 'no_radius',
 }
 
 export enum Padding {
-  sm = "sm",
-  md = "md",
-  xl = "xl",
+  sm = 'sm',
+  md = 'md',
+  xl = 'xl',
 }
 
 export const Container = ({
@@ -35,7 +35,7 @@ export const Container = ({
         className,
         cs[borders as Borders],
         cs[padding as Padding],
-        isLoading && cs.isLoading
+        isLoading && cs.isLoading,
       )}
     >
       {children}

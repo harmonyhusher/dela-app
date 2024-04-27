@@ -1,7 +1,8 @@
-/* eslint-disable react/no-children-prop */
-import React, { FormEventHandler } from "react";
+import React, { FormEventHandler } from 'react';
 
-import { useUnit } from "effector-react";
+import { Button } from '@src/shared/ui/button';
+import { Input } from '@src/shared/ui/input';
+import { useUnit } from 'effector-react';
 
 import {
   $email,
@@ -10,10 +11,8 @@ import {
   emailChanged,
   formSubmitted,
   passwordChanged,
-} from "../model/model";
-import cs from "./Form.module.scss";
-import { Input } from "@src/shared/ui/input";
-import { Button } from "@src/shared/ui/button";
+} from '../model/model';
+import cs from './Form.module.scss';
 
 export interface IAuthForm {
   email: string;
@@ -37,21 +36,21 @@ export const Form = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       emailChanged(e.target.value);
     },
-    []
+    [],
   );
 
   const onPasswordChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       passwordChanged(e.target.value);
     },
-    []
+    [],
   );
 
   console.log(email, password);
   return (
     <form className={cs.container} onSubmit={onFormSubmit}>
       <Input
-        children={"Почта"}
+        children={'Почта'}
         id="email"
         onChange={onEmailChange}
         type="email"
@@ -59,13 +58,13 @@ export const Form = () => {
         value={email}
       />
       <Input
-        children={"Пароль"}
+        children={'Пароль'}
         id="password"
         onChange={onPasswordChange}
         // disabled={disabled}
         value={password}
       />
-      <Button children={"Войти"} disabled={disabled} type="submit" />
+      <Button children={'Войти'} disabled={disabled} type="submit" />
     </form>
   );
 };

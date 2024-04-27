@@ -1,6 +1,7 @@
-import { RouterProvider } from "atomic-router-react";
-import { router } from "./routes";
-import { Pages } from "../pages/index";
+import { RouterProvider } from 'atomic-router-react';
+
+import { Pages } from '../pages/index';
+import { router } from './routes';
 function App() {
   return (
     <RouterProvider router={router}>

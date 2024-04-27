@@ -1,16 +1,16 @@
 import {
   Align,
-  Direction,
+  // Direction,
   Justify,
   Props,
-} from "@shared/interfaces/ui/Flex.interfaces";
-import cn from "classnames";
+} from '@shared/interfaces/ui/Flex.interfaces';
+import cn from 'classnames';
 
-import cs from "./flex.module.scss";
+import cs from './flex.module.scss';
 
 export const Flex = ({
   align = Align.Center,
-  direction = Direction.Row,
+  // direction = Direction.Row,
   justify = Justify.Center,
   children,
   className,
@@ -23,7 +23,7 @@ export const Flex = ({
         cs[align],
         [cs.direction],
         cs[justify],
-        className
+        className,
       )}
       style={style}
     >

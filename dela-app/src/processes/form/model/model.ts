@@ -1,12 +1,13 @@
-import { $isAuth, $token, tokenRecieved } from "@src/app/model";
-import { createEvent, createStore, sample } from "effector";
-import { not, or } from "patronum";
-import { auth } from "./api";
-import { redirect } from "atomic-router";
-import { routes } from "@src/app/routes";
+import { $isAuth, $token, tokenRecieved } from '@src/app/model';
+import { routes } from '@src/app/routes';
+import { redirect } from 'atomic-router';
+import { createEvent, createStore, sample } from 'effector';
+import { not, or } from 'patronum';
 
-const $email = createStore<string>("");
-const $password = createStore<string>("");
+import { auth } from './api';
+
+const $email = createStore<string>('');
+const $password = createStore<string>('');
 
 const emailChanged = createEvent<string>();
 const passwordChanged = createEvent<string>();

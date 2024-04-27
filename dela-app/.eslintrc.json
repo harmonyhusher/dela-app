@@ -1,6 +1,5 @@
 {
   "extends": [
-    "react-app",
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -13,7 +12,8 @@
       "jsx": true
     },
     "ecmaVersion": 9,
-    "sourceType": "module" 
+    "project": "tsconfig.json",
+    "sourceType": "module"
   },
   "env": {
     "browser": true,
@@ -33,11 +33,9 @@
   },
   "rules": {
     "no-underscore-dangle": "off",
-    "prettier/prettier": "error",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/dot-notation": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-
     "@typescript-eslint/no-empty-interface": [
       "error",
       {
@@ -117,5 +115,6 @@
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "react/require-default-props": "off"
-  }
+  },
+  "ignorePatterns": ["vite.config.ts"]
 }

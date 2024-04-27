@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import cs from "./paragraph.module.scss";
-import cn from "classnames";
+import cn from 'classnames';
 
-export type SizeVariant = "l" | "xl" | "s" | "m";
+import cs from './paragraph.module.scss';
+
+export type SizeVariant = 'l' | 'xl' | 's' | 'm';
 
 export interface TitleProps
   extends React.DetailedHTMLProps<
@@ -23,7 +24,7 @@ export const Paragraph = ({
   children,
   size,
   isLoading,
-  tag: Tag = "p",
+  tag: Tag = 'p',
   ...props
 }: TitleProps) => {
   return (
@@ -32,7 +33,7 @@ export const Paragraph = ({
         cs.title,
         className,
         size && cs[size as SizeVariant],
-        isLoading && cs.isLoading
+        isLoading && cs.isLoading,
       )}
       {...props}
     >

@@ -1,6 +1,7 @@
-import { chainAuthorized } from "@src/app/routes/chains/chainAuthoirized";
-import { routes } from "@app/routes/router";
-import { User } from "./page";
+import { routes } from '@app/routes/router';
+import { chainAuthorized } from '@src/app/routes/chains/chainAuthoirized';
+
+import { User } from './page';
 
 export const currentRoute = routes.private.user;
 

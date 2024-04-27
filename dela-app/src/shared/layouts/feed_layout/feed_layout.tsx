@@ -1,6 +1,8 @@
-import React from "react";
-import cs from "./layout.module.scss";
-import { Header } from "@src/shared/ui/header";
+import React from 'react';
+
+import { Header } from '@src/shared/ui/header';
+
+import cs from './layout.module.scss';
 
 export const FeedLayout = ({ children }: React.PropsWithChildren) => {
   return (

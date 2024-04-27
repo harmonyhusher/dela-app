@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import cn from "classnames";
+import { generateColor } from '@src/shared/helpers/generateColor';
+import { Align, Direction } from '@src/shared/interfaces/ui/Flex.interfaces';
+import { Flex } from '@src/shared/ui/flex';
+import cn from 'classnames';
 
-import cs from "./avatar.module.scss";
-import { generateColor } from "@src/shared/helpers/generateColor";
-import { Align, Direction } from "@src/shared/interfaces/ui/Flex.interfaces";
-import { Flex } from "@src/shared/ui/flex";
+import cs from './avatar.module.scss';
 
 type Props = {
   firstName: string;
@@ -16,7 +16,7 @@ type Props = {
 };
 
 enum Variants {
-  Small = "small",
+  Small = 'small',
 }
 
 export const Avatar = ({
@@ -34,7 +34,7 @@ export const Avatar = ({
         {
           [cs.variant]: variant,
         },
-        { [cs.isLoading]: isLoading }
+        { [cs.isLoading]: isLoading },
       )}
       direction={Direction.Row}
       style={{ background: generateColor(firstName, lastName) }}

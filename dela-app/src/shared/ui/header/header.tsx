@@ -1,6 +1,8 @@
-import React from "react";
-import styles from "./header.module.scss";
-import { motion, useAnimation } from "framer-motion";
+import React from 'react';
+
+import { motion, useAnimation } from 'framer-motion';
+
+import styles from './header.module.scss';
 
 export function Header() {
   const [prevScrollPos, setPrevScrollPos] = React.useState(0);
@@ -14,8 +16,8 @@ export function Header() {
       setPrevScrollPos(currentScrollPos);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos]);
 
   React.useEffect(() => {
@@ -24,10 +26,10 @@ export function Header() {
 
   return (
     <motion.header
+      animate={controls}
+      className={styles.header_container}
       layout
       layoutRoot
-      className={styles.header_container}
-      animate={controls}
     >
       asdasdasdasd
     </motion.header>

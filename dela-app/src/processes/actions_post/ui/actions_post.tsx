@@ -1,14 +1,14 @@
-import { IconHeartFilled, IconHearts, IconHeart } from "@tabler/icons-react";
-import { useUnit } from "effector-react";
-import { ILike, clickLike } from "../model/model";
-import { Container } from "@src/shared/ui/container";
-import { Borders } from "@src/shared/ui/container/container";
-import { Flex } from "@src/shared/ui/flex";
+import { Align, Justify } from '@src/shared/interfaces/ui/Flex.interfaces';
+import { Container } from '@src/shared/ui/container';
+import { Borders } from '@src/shared/ui/container/container';
+import { Flex } from '@src/shared/ui/flex';
+import { Paragraph } from '@src/shared/ui/paragraph/paragraph';
+import { IconHeart, IconHeartFilled, IconHearts } from '@tabler/icons-react';
+import classNames from 'classnames';
+import { useUnit } from 'effector-react';
 
-import cs from "./actions_post.module.scss";
-import classNames from "classnames";
-import { Align, Justify } from "@src/shared/interfaces/ui/Flex.interfaces";
-import { Paragraph } from "@src/shared/ui/paragraph/paragraph";
+import { clickLike, ILike } from '../model/model';
+import cs from './actions_post.module.scss';
 
 export const ActionsPost = ({
   isLiked,
@@ -25,7 +25,7 @@ export const ActionsPost = ({
 
   return (
     <Container borders={Borders.NoRadius} isLoading={isLoading}>
-      <Flex justify={Justify.SpaceBetween} align={Align.Center}>
+      <Flex align={Align.Center} justify={Justify.SpaceBetween}>
         {isLiked ? (
           <IconHeartFilled
             className={
@@ -35,10 +35,10 @@ export const ActionsPost = ({
           />
         ) : (
           <IconHeart
-            onClick={() => click(data)}
             className={
               isLiked ? undefined : classNames(cs.like_button, cs.unliked)
             }
+            onClick={() => click(data)}
           />
         )}
         {amount > 0 && (
