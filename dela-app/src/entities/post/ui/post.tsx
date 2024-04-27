@@ -13,6 +13,7 @@ import { Wrapper } from '@src/shared/ui/wrapper';
 import { Avatar } from '@src/widgets/avatar/avatar';
 import { Comments } from '@src/widgets/comments';
 import { Name } from '@src/widgets/name/name';
+
 import { Link } from 'atomic-router-react';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';

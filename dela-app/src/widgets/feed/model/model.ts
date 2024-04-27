@@ -1,9 +1,10 @@
-import { cache, createQuery, update } from '@farfetched/core';
 import { routes } from '@src/app/routes';
 import { toLikeOrDislikePost } from '@src/processes/actions_post';
 import { commentPost } from '@src/processes/comment_post/model/model';
 import { api } from '@src/shared/api';
 import { IPost } from '@src/shared/interfaces/entities/Post.interface';
+
+import { cache, createQuery, update } from '@farfetched/core';
 import { chainRoute } from 'atomic-router';
 import { combine, createEffect, createEvent, createStore } from 'effector';
 import { debounce } from 'patronum';

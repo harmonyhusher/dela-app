@@ -1,6 +1,7 @@
-import { createQuery } from '@farfetched/core';
 import { api } from '@src/shared/api';
 import { IUser } from '@src/shared/interfaces/entities/User.interface';
+
+import { createQuery } from '@farfetched/core';
 
 export const $userData = createQuery({
   handler: async () => {

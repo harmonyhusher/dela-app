@@ -2,6 +2,7 @@ import { Container } from '@src/shared/ui/container';
 import { Borders } from '@src/shared/ui/container/container';
 import { Input } from '@src/shared/ui/input';
 import { Avatar } from '@src/widgets/avatar/avatar';
+
 import { IconSend2 } from '@tabler/icons-react';
 import { useUnit } from 'effector-react';
 

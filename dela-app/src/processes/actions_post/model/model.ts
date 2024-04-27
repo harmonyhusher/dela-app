@@ -1,8 +1,9 @@
 // router.patch("/:id/like", verifyToken, likePost);
 
-import { createMutation } from '@farfetched/core';
 import { api } from '@src/shared/api';
 import { IPost } from '@src/shared/interfaces/entities/Post.interface';
+
+import { createMutation } from '@farfetched/core';
 import { createEvent, sample } from 'effector';
 
 export interface ILike {

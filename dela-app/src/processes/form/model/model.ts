@@ -1,5 +1,6 @@
 import { $isAuth, $token, tokenRecieved } from '@src/app/model';
 import { routes } from '@src/app/routes';
+
 import { redirect } from 'atomic-router';
 import { createEvent, createStore, sample } from 'effector';
 import { not, or } from 'patronum';

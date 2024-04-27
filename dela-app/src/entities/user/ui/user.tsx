@@ -5,6 +5,7 @@ import { Flex } from '@src/shared/ui/flex';
 import { Paragraph } from '@src/shared/ui/paragraph/paragraph';
 import { Avatar } from '@src/widgets/avatar/avatar';
 import { Friends } from '@src/widgets/friends';
+
 import { IconMapPin } from '@tabler/icons-react';
 import { useUnit } from 'effector-react';
 

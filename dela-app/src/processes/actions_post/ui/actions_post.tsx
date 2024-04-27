@@ -3,6 +3,7 @@ import { Container } from '@src/shared/ui/container';
 import { Borders } from '@src/shared/ui/container/container';
 import { Flex } from '@src/shared/ui/flex';
 import { Paragraph } from '@src/shared/ui/paragraph/paragraph';
+
 import { IconHeart, IconHeartFilled, IconHearts } from '@tabler/icons-react';
 import classNames from 'classnames';
 import { useUnit } from 'effector-react';

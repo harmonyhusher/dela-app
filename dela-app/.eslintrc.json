@@ -62,7 +62,14 @@
           "ignoreCase": true,
           "order": "asc"
         },
-        "groups": ["/^react/", "module", ["parent", "sibling", "index"]],
+        "groups": [
+          "/^react/",
+          "/^@src/",
+          "/^@shared/",
+          "module",
+          ["parent", "sibling", "index"]
+        ],
+
         "newlinesBetween": "always"
       }
     ],

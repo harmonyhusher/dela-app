@@ -4,6 +4,7 @@ import {
   Justify,
   Props,
 } from '@shared/interfaces/ui/Flex.interfaces';
+
 import cn from 'classnames';
 
 import cs from './flex.module.scss';

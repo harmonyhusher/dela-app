@@ -1,4 +1,5 @@
 import { InputProps } from '@shared/interfaces/ui/Input.interfaces';
+
 import cn from 'classnames';
 
 import cs from './Input.module.scss';

@@ -1,5 +1,6 @@
-import { routes } from '@app/routes/router';
 import { chainAuthorized } from '@src/app/routes/chains/chainAuthoirized';
+
+import { routes } from '@app/routes/router';
 
 import { User } from './page';
 

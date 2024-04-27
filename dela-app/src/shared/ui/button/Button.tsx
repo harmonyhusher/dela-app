@@ -1,4 +1,5 @@
 import { ButtonProps } from '@shared/interfaces/ui/Button.interfaces';
+
 import cn from 'classnames';
 
 import cs from './Button.module.scss';

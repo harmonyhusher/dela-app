@@ -3,6 +3,7 @@ import React from 'react';
 import { generateColor } from '@src/shared/helpers/generateColor';
 import { Align, Direction } from '@src/shared/interfaces/ui/Flex.interfaces';
 import { Flex } from '@src/shared/ui/flex';
+
 import cn from 'classnames';
 
 import cs from './avatar.module.scss';

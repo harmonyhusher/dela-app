@@ -1,6 +1,7 @@
 import React, { useId } from 'react';
 
 import { Post } from '@src/entities/post/ui/post';
+
 import { useUnit } from 'effector-react';
 
 import { feedQuery } from '../model/model';
