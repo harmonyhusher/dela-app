@@ -46,6 +46,7 @@ export const Post = ({
         isLiked={
           likes ? (user?._id !== undefined ? user?._id in likes : false) : false
         }
+        amount={Object.keys(likes || {}).length}
       />
       <Comments comments={comments || []} />
       <CommentPost id={_id as number} set={setValue} value={value} />

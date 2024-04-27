@@ -1,6 +1,4 @@
-import { IconHeart } from "@tabler/icons-react";
-
-import { IconHeartFilled } from "@tabler/icons-react";
+import { IconHeartFilled, IconHearts, IconHeart } from "@tabler/icons-react";
 import { useUnit } from "effector-react";
 import { ILike, clickLike } from "../model/model";
 import { Container } from "@src/shared/ui/container";
@@ -9,19 +7,23 @@ import { Flex } from "@src/shared/ui/flex";
 
 import cs from "./actions_post.module.scss";
 import classNames from "classnames";
+import { Align, Justify } from "@src/shared/interfaces/ui/Flex.interfaces";
+import { Paragraph } from "@src/shared/ui/paragraph/paragraph";
 
 export const ActionsPost = ({
   isLiked,
   data,
+  amount,
 }: {
   isLiked: boolean;
   data: ILike;
+  amount: number;
 }) => {
   const [click] = useUnit([clickLike]);
 
   return (
     <Container borders={Borders.NoRadius}>
-      <Flex>
+      <Flex justify={Justify.SpaceBetween} align={Align.Center}>
         {isLiked ? (
           <IconHeartFilled
             className={
@@ -36,6 +38,12 @@ export const ActionsPost = ({
               isLiked ? undefined : classNames(cs.like_button, cs.unliked)
             }
           />
+        )}
+        {amount > 0 && (
+          <Flex>
+            <Paragraph>{amount}</Paragraph>
+            <IconHearts />
+          </Flex>
         )}
       </Flex>
     </Container>
