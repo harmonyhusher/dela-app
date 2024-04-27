@@ -5,6 +5,10 @@
     border-radius: 12px;
 }
 
+.sm {
+    padding: 12px;
+}
+
 .null {
     border: 0px !important;
     border-radius: 0px !important;
@@ -12,6 +16,11 @@
 
 .all {
     border-radius: 12px;
+    border: 1px solid #303030;
+}
+
+.no_radius {
+    border-radius: 0px;
     border: 1px solid #303030;
 }
 

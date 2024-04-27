@@ -19,17 +19,10 @@ export const commentPost = createMutation({
 });
 
 const sendComment = createEvent<IComment>();
-const updateSinglePost = createEvent<IPost>();
 
 sample({
   clock: sendComment,
   target: commentPost.start,
-});
-
-sample({
-  clock: commentPost.finished.success,
-  fn: (clk) => clk.result,
-  target: updateSinglePost,
 });
 
 export { sendComment };

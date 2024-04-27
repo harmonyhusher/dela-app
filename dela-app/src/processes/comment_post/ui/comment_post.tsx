@@ -4,8 +4,8 @@ import { Input } from "@src/shared/ui/input";
 import cs from "./comment.module.scss";
 import { Avatar } from "@src/widgets/avatar/avatar";
 import { useUnit } from "effector-react";
-import { sendComment } from "@src/entities/post/model/model";
 import { IconSend2 } from "@tabler/icons-react";
+import { sendComment } from "../model/model";
 
 export const CommentPost = ({
   id,

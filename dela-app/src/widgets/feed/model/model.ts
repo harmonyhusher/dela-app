@@ -1,17 +1,16 @@
-import { cache, createCacheAdapter, createQuery } from "@farfetched/core";
-import { router, routes } from "@src/app/routes";
-import { commentPost } from "@src/entities/post/model/model";
-import { currentRoute } from "@src/pages/feed";
+import {
+  cache,
+  createCacheAdapter,
+  createQuery,
+  update,
+} from "@farfetched/core";
+import { routes } from "@src/app/routes";
+import { toLikeOrDislikePost } from "@src/processes/actions_post";
+import { commentPost } from "@src/processes/comment_post/model/model";
 import { api } from "@src/shared/api";
 import { IPost } from "@src/shared/interfaces/entities/Post.interface";
 import { chainRoute } from "atomic-router";
-import {
-  combine,
-  createEffect,
-  createEvent,
-  createStore,
-  sample,
-} from "effector";
+import { combine, createEffect, createEvent, createStore } from "effector";
 import { debounce } from "patronum";
 
 // /* READ */
@@ -42,8 +41,48 @@ const getFeedFx = createEffect(feedQuery.start);
 
 debounce({
   source: $filters,
-  target: getFeedFx,
+  target: feedQuery.start,
   timeout: 300,
+});
+
+update(feedQuery, {
+  on: commentPost,
+  by: {
+    success({ mutation, query }) {
+      if (query && query !== null && "result" in query) {
+        const queryResult = query;
+        queryResult.result = queryResult.result.map((post) => {
+          if (post._id === mutation.result._id) {
+            return mutation.result;
+          } else {
+            return post;
+          }
+        });
+        return queryResult;
+      }
+      return { result: [mutation.result] };
+    },
+  },
+});
+
+update(feedQuery, {
+  on: toLikeOrDislikePost,
+  by: {
+    success({ mutation, query }) {
+      if (query && query !== null && "result" in query) {
+        const queryResult = query;
+        queryResult.result = queryResult.result.map((post) => {
+          if (post._id === mutation.result._id) {
+            return mutation.result;
+          } else {
+            return post;
+          }
+        });
+        return queryResult;
+      }
+      return { result: [mutation.result] };
+    },
+  },
 });
 
 chainRoute({

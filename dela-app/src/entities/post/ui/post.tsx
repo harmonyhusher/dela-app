@@ -11,6 +11,9 @@ import { CommentPost } from "@src/processes/comment_post";
 import { Wrapper } from "@src/shared/ui/wrapper";
 import { Avatar } from "@src/widgets/avatar/avatar";
 import { Name } from "@src/widgets/name/name";
+import { useUnit } from "effector-react";
+import { $userData } from "@src/entities/user/api/query";
+import { ActionsPost } from "@src/processes/actions_post";
 
 export const Post = ({
   firstName,
@@ -23,8 +26,8 @@ export const Post = ({
   _id,
 }: Partial<IPost>) => {
   const [value, setValue] = React.useState("");
-
-  console.log(_id, value);
+  const { data: user } = useUnit($userData);
+  console.log(likes, "s");
   return (
     <Wrapper className={cn(cs.wrapper)}>
       <Container className={cn(cs.container)}>
@@ -38,6 +41,12 @@ export const Post = ({
         </Flex>
         <span>{description}</span>
       </Container>
+      <ActionsPost
+        data={{ postId: _id as number, userId: String(user?._id) }}
+        isLiked={
+          likes ? (user?._id !== undefined ? user?._id in likes : false) : false
+        }
+      />
       <Comments comments={comments || []} />
       <CommentPost id={_id as number} set={setValue} value={value} />
     </Wrapper>
