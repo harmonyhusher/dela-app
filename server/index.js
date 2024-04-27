@@ -14,6 +14,8 @@ import postRoutes from "./routes/posts.js";
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
+import { verifyTokenAndExtractUser } from "./middleware/decodeToken.js";
+import { getUserHimself } from "./controllers/users.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -50,6 +52,8 @@ app.post("/posts", verifyToken, createPost);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+
+app.use("/user", verifyToken, getUserHimself);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;

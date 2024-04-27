@@ -1,3 +1,14 @@
+@import '@src/app/styles/globals.scss';
+
 .container {
-    max-width: 1440px;
+    display: flex;
+    justify-content: center;
+
+    .content {
+        max-width: 1240px;
+        display: flex;
+        gap: var(--basic-padding);
+        padding: var(--basic-padding);
+        // width: 100%;
+    }
 }

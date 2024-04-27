@@ -1,6 +1,28 @@
 .container {
     width: 100%;
-    border: 1px solid #303030;
     background-color: #181818;
+    border: 1px solid #303030;
     border-radius: 12px;
+}
+
+.null {
+    border: 0px !important;
+    border-radius: 0px !important;
+}
+
+.all {
+    border-radius: 12px;
+    border: 1px solid #303030;
+}
+
+.top {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+}
+
+.bottom {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top: 0px;
 }

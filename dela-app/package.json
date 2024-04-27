@@ -12,6 +12,7 @@
   "dependencies": {
     "@farfetched/core": "^0.12.4",
     "@fontsource/poppins": "^5.0.14",
+    "@tabler/icons-react": "^3.2.0",
     "atomic-router": "^0.10.1",
     "atomic-router-react": "^0.10.0",
     "axios": "^1.6.8",

@@ -11,6 +11,19 @@ export const getUser = async (req, res) => {
   }
 };
 
+export const getUserHimself = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Пользователь не найден" });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 export const getUserPage = async (req, res) => {
   try {
     const { id } = req.params;
@@ -90,10 +103,10 @@ export const addRemoveFriend = async (req, res) => {
 export const searchUsers = async (req, res) => {
   try {
     const { firstName, lastName } = req.query;
-    const users = await User.find({ 
+    const users = await User.find({
       $or: [
-        { firstName: new RegExp(firstName, 'i') },
-        { lastName: new RegExp(lastName, 'i') },
+        { firstName: new RegExp(firstName, "i") },
+        { lastName: new RegExp(lastName, "i") },
       ],
     });
     res.status(200).json(users);

@@ -1,5 +1,20 @@
 .container {
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-    border: 0px !important;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 4px;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 0px;
+    border-top: 0px;
+}
+
+.p {
+    text-align: start;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.author {
+    gap: 12px;
 }

@@ -1,1 +1,1 @@
-export { CommentPost } from "./comment_post";
+export { CommentPost } from "./ui/comment_post";

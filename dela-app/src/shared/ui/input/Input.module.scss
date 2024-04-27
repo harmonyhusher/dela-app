@@ -1,24 +1,38 @@
+@import '@src/app/styles/globals.scss';
+
 .container {
     display: flex;
+    position: relative;
     width: 100%;
+    box-sizing: border-box;
     gap: 8px;
-    flex-direction: column;
-    align-items: flex-start;
+}
+
+.icon {
+    position: absolute;
+    right: 16px;
+    top: 27%;
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: 0px;
 }
 
 .input {
+    box-sizing: border-box;
     min-height: 52px;
     padding: 12px;
     border-radius: 10px;
     width: 100%;
-    border: 1px solid #545455;
-    background-color: rgb(56, 56, 56);
+    border: 1px solid var(--main-input-color);
+    background-color: var(--main-input-color);
     color: white;
     outline: none;
-    font-size: 18px;
+    font-size: 17px;
+    transition: all 0.2s ease;
 
     &:focus {
-        border: 1px solid #6d6d6e;
+        border: 1px solid var(--main-focus-color);
     }
 }
 
@@ -26,7 +40,6 @@
     cursor: text;
     width: 100%;
     height: 100%;
-    background: transparent;
 }
 
 .label {
@@ -34,5 +47,5 @@
     display: flex;
     font-weight: 500;
     flex-direction: column;
-    font-size: 18px;
+    font-size: var(--basic-padding);
 }

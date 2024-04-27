@@ -1,7 +1,7 @@
-import { Align, Direction, Props } from '@shared/interfaces/ui/Flex.interfaces';
-import cn from 'classnames';
+import { Align, Direction, Props } from "@shared/interfaces/ui/Flex.interfaces";
+import cn from "classnames";
 
-import cs from './flex.module.scss';
+import cs from "./flex.module.scss";
 
 export const Flex = ({
   align = Align.Center,
@@ -11,7 +11,10 @@ export const Flex = ({
   style,
 }: React.PropsWithChildren<Props>) => {
   return (
-    <div className={cn(cs.container, { [cs.direction]: direction }, { [cs.align]: align }, className)} style={style}>
+    <div
+      className={cn(cs.container, cs[align], [cs.direction], className)}
+      style={style}
+    >
       {children}
     </div>
   );

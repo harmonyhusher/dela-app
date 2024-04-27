@@ -2,13 +2,15 @@ import React from "react";
 
 import cn from "classnames";
 
-import { Avatar } from "./{view}/avatar/avatar";
-import { Name } from "./{view}/name/name";
 import cs from "./post.module.scss";
 import { IPost } from "@src/shared/interfaces/entities/Post.interface";
 import { Container } from "@src/shared/ui/container";
 import { Flex } from "@src/shared/ui/flex";
 import { Comments } from "@src/widgets/comments";
+import { CommentPost } from "@src/processes/comment_post";
+import { Wrapper } from "@src/shared/ui/wrapper";
+import { Avatar } from "@src/widgets/avatar/avatar";
+import { Name } from "@src/widgets/name/name";
 
 export const Post = ({
   firstName,
@@ -18,9 +20,13 @@ export const Post = ({
   comments,
   likes,
   createdAt,
+  _id,
 }: Partial<IPost>) => {
+  const [value, setValue] = React.useState("");
+
+  console.log(_id, value);
   return (
-    <div>
+    <Wrapper className={cn(cs.wrapper)}>
       <Container className={cn(cs.container)}>
         <Flex className={cs.name_container}>
           <Avatar
@@ -33,6 +39,7 @@ export const Post = ({
         <span>{description}</span>
       </Container>
       <Comments comments={comments || []} />
-    </div>
+      <CommentPost id={_id as number} set={setValue} value={value} />
+    </Wrapper>
   );
 };
