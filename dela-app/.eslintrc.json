@@ -22,7 +22,6 @@
   "plugins": [
     "eslint-plugin-import-helpers",
     "jsx-a11y",
-    "prettier",
     "react",
     "react-hooks"
   ],
