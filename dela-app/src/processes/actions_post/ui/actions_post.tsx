@@ -11,21 +11,11 @@ import { useUnit } from 'effector-react';
 import { clickLike, ILike } from '../model/model';
 import cs from './actions_post.module.scss';
 
-export const ActionsPost = ({
-  isLiked,
-  data,
-  amount,
-  isLoading,
-}: {
-  isLiked: boolean;
-  data: ILike;
-  amount: number;
-  isLoading?: boolean;
-}) => {
+export const ActionsPost = ({ isLiked, data, amount }: { isLiked: boolean; data: ILike; amount: number }) => {
   const [click] = useUnit([clickLike]);
 
   return (
-    <Container borders={Borders.NoRadius} isLoading={isLoading}>
+    <Container borders={Borders.NoRadius}>
       <Flex align={Align.Center} justify={Justify.SpaceBetween}>
         {isLiked ? (
           <IconHeartFilled

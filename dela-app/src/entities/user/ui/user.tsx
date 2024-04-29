@@ -15,10 +15,6 @@ import cs from './user.module.scss';
 export const User = () => {
   const { data: user, pending } = useUnit($userData);
 
-  if (pending) {
-    return <>Loading</>;
-  }
-
   return (
     <Container borders={user && user.friends.length > 0 ? Borders.Top : Borders.All} className={cs.container}>
       <Flex align={Align.Center} className={cs.name}>

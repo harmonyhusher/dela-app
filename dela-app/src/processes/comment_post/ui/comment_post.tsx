@@ -1,3 +1,4 @@
+import { $userData } from '@src/entities/user/api/query';
 import { Container } from '@src/shared/ui/container';
 import { Borders } from '@src/shared/ui/container/container';
 import { Input } from '@src/shared/ui/input';
@@ -9,19 +10,12 @@ import { useUnit } from 'effector-react';
 import { sendComment } from '../model/model';
 import cs from './comment.module.scss';
 
-export const CommentPost = ({
-  id,
-  value,
-  set,
-}: {
-  id: number;
-  value: string;
-  set: (value: string) => void;
-}) => {
+export const CommentPost = ({ id, value, set }: { id: number; value: string; set: (value: string) => void }) => {
   const [send] = useUnit([sendComment]);
+  const { data: user } = useUnit($userData);
   return (
     <Container borders={Borders.Bottom} className={cs.container}>
-      <Avatar firstName="Д" lastName="С" />
+      <Avatar firstName={user?.firstName || ''} lastName={user?.lastName || ''} />
       <Input
         icon={<IconSend2 />}
         id={`${id}-input`}

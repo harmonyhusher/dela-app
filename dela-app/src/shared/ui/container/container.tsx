@@ -30,13 +30,7 @@ export const Container = ({
 }>) => {
   return (
     <div
-      className={cn(
-        cs.container,
-        className,
-        cs[borders as Borders],
-        cs[padding as Padding],
-        isLoading && cs.isLoading,
-      )}
+      className={cn(cs.container, className, cs[borders as Borders], cs[padding as Padding], isLoading && cs.isLoading)}
     >
       {children}
     </div>

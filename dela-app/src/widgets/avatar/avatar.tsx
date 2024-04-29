@@ -20,13 +20,7 @@ enum Variants {
   Small = 'small',
 }
 
-export const Avatar = ({
-  lastName,
-  firstName,
-  userId,
-  variant,
-  isLoading,
-}: Props) => {
+export const Avatar = ({ lastName, firstName, userId, variant, isLoading }: Props) => {
   return (
     <Flex
       align={Align.Center}
@@ -38,7 +32,7 @@ export const Avatar = ({
         { [cs.isLoading]: isLoading },
       )}
       direction={Direction.Row}
-      style={{ background: generateColor(firstName, lastName) }}
+      style={{ background: generateColor(firstName || '', lastName || '') }}
     >
       {firstName?.[0]}
       {lastName?.[0]}

@@ -20,10 +20,7 @@ export const Comment = ({ firstName, lastName, text, createdAt }: Props) => {
   return (
     <Container className={cs.container}>
       <Flex className={cs.author} direction={Direction.Column}>
-        <Avatar
-          firstName={firstName || ''}
-          lastName={lastName || firstName ? firstName[1] : ''}
-        />
+        <Avatar firstName={firstName || ''} lastName={lastName || firstName ? firstName[1] : ''} />
         <Flex direction={Direction.Column}>
           <Paragraph>
             {firstName} {lastName}
