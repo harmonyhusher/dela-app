@@ -3,7 +3,7 @@ import { routes } from '@src/app/routes';
 
 import { redirect } from 'atomic-router';
 import { createEvent, createStore, sample } from 'effector';
-import { not, or } from 'patronum';
+import { and, not, or } from 'patronum';
 
 import { auth } from './api';
 
@@ -31,21 +31,9 @@ sample({
   target: tokenRecieved,
 });
 
-const isAuthorized = sample({
-  clock: $token,
-  filter: not($isAuth),
-});
-
 redirect({
-  clock: isAuthorized,
+  clock: auth.$succeeded,
   route: routes.private.feed,
 });
 
-export {
-  $email,
-  $password,
-  $formDisabled,
-  emailChanged,
-  formSubmitted,
-  passwordChanged,
-};
+export { $email, $password, $formDisabled, emailChanged, formSubmitted, passwordChanged };

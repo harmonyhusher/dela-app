@@ -20,27 +20,23 @@ export const User = () => {
   }
 
   return (
-    <div>
-      <Container
-        borders={user && user.friends.length > 0 ? Borders.Top : Borders.All}
-        className={cs.container}
-      >
-        <Flex align={Align.Center} className={cs.name}>
-          <Avatar
-            firstName={user?.firstName as string}
-            lastName={user?.lastName as string}
-            userId={user?._id}
-          />
-          <Paragraph>
-            {user?.firstName} {user?.lastName}
-          </Paragraph>
-        </Flex>
-        <Flex>
-          <IconMapPin />
-          <Paragraph>{user?.location}</Paragraph>
-        </Flex>
-      </Container>
-      {user?.friends && <Friends />}
-    </div>
+    <Container borders={user && user.friends.length > 0 ? Borders.Top : Borders.All} className={cs.container}>
+      <Flex align={Align.Center} className={cs.name}>
+        <Avatar
+          firstName={user?.firstName as string}
+          isLoading={pending}
+          lastName={user?.lastName as string}
+          userId={user?._id}
+        />
+        <Paragraph isLoading={pending}>
+          {user?.firstName} {user?.lastName}
+        </Paragraph>
+      </Flex>
+      <Flex>
+        <IconMapPin />
+        <Paragraph isLoading={pending}>{user?.location}</Paragraph>
+      </Flex>
+      {user && user?.friends.length > 0 && <Friends />}
+    </Container>
   );
 };

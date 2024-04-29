@@ -1190,6 +1190,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.0.tgz#a5417ae8427873f1dd08b70b3574b453e67b5f7f"
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
 
+"@farfetched/atomic-router@^0.12.4":
+  version "0.12.4"
+  resolved "https://registry.yarnpkg.com/@farfetched/atomic-router/-/atomic-router-0.12.4.tgz#c166e6990c42ffd4e6771e9814ade9626887c0bb"
+  integrity sha512-1GNBegmwgmZeYk3QTCFdkR69vrVS0bh1Cv6sGlCHx/hR0cGuSxYWDZBqorr+0XDgUrUqYEft3ZAslyNnOLGpKw==
+
 "@farfetched/core@^0.12.4":
   version "0.12.4"
   resolved "https://registry.yarnpkg.com/@farfetched/core/-/core-0.12.4.tgz#cecfdd87ccc69371b9f28a4eebdfc853ca2a3432"

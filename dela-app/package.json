@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@farfetched/atomic-router": "^0.12.4",
     "@farfetched/core": "^0.12.4",
     "@fontsource/poppins": "^5.0.14",
     "@tabler/icons-react": "^3.2.0",

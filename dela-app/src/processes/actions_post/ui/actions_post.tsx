@@ -29,16 +29,12 @@ export const ActionsPost = ({
       <Flex align={Align.Center} justify={Justify.SpaceBetween}>
         {isLiked ? (
           <IconHeartFilled
-            className={
-              isLiked ? classNames(cs.like_button, cs.liked) : undefined
-            }
+            className={isLiked ? classNames(cs.like_button, cs.liked) : undefined}
             onClick={() => click(data)}
           />
         ) : (
           <IconHeart
-            className={
-              isLiked ? undefined : classNames(cs.like_button, cs.unliked)
-            }
+            className={isLiked ? undefined : classNames(cs.like_button, cs.unliked)}
             onClick={() => click(data)}
           />
         )}

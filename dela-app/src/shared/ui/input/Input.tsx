@@ -4,13 +4,7 @@ import cn from 'classnames';
 
 import cs from './Input.module.scss';
 
-export const Input = ({
-  id,
-  children,
-  icon,
-  onIconClick,
-  ...props
-}: InputProps) => {
+export const Input = ({ id, children, icon, onIconClick, ...props }: InputProps) => {
   return (
     <span className={cs.container}>
       <label className={cn(cs.label)} htmlFor={id}>
