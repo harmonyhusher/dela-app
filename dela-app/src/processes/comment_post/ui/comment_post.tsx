@@ -1,4 +1,4 @@
-import { $userData } from '@src/entities/user/api/query';
+import { userQuery } from '@src/entities/user/api/query';
 import { Container } from '@src/shared/ui/container';
 import { Borders } from '@src/shared/ui/container/container';
 import { Input } from '@src/shared/ui/input';
@@ -12,7 +12,7 @@ import cs from './comment.module.scss';
 
 export const CommentPost = ({ id, value, set }: { id: number; value: string; set: (value: string) => void }) => {
   const [send] = useUnit([sendComment]);
-  const { data: user } = useUnit($userData);
+  const { data: user } = useUnit(userQuery);
   return (
     <Container borders={Borders.Bottom} className={cs.container}>
       <Avatar firstName={user?.firstName || ''} lastName={user?.lastName || ''} />

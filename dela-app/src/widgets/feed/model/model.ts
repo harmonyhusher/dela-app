@@ -6,7 +6,7 @@ import { IPost } from '@src/shared/interfaces/entities/Post.interface';
 
 import { cache, createQuery, update } from '@farfetched/core';
 import { chainRoute } from 'atomic-router';
-import { combine, createEffect, createEvent, createStore } from 'effector';
+import { combine, createEffect, createEvent, createStore, sample } from 'effector';
 import { debounce } from 'patronum';
 
 const $page = createStore(0);
@@ -79,9 +79,14 @@ update(feedQuery, {
   },
 });
 
-chainRoute({
-  route: routes.private.feed,
-  beforeOpen: getFeedFx,
+// chainRoute({
+//   route: routes.private.feed,
+//   beforeOpen: getFeedFx,
+// });
+
+sample({
+  clock: routes.private.feed.opened,
+  target: getFeedFx,
 });
 
 export { updateSinglePost };

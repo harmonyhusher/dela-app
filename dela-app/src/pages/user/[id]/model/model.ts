@@ -1,6 +1,6 @@
 import { routes } from '@src/app/routes';
 import { chainAuthorized } from '@src/app/routes/chains/chainAuthoirized';
-import { $userData } from '@src/entities/user/api/query';
+import { userQuery } from '@src/entities/user/api/query';
 import { api } from '@src/shared/api';
 import { IPost } from '@src/shared/interfaces/entities/Post.interface';
 
@@ -25,13 +25,13 @@ export const userByIdQuery = createQuery({
   },
 });
 
-const getAllInfoById = sample({
-  source: routes.private.user.opened,
-  fn: (params) => params.params.userId,
-  target: [userFeed.start, userByIdQuery.start],
-});
+// const getAllInfoById = sample({
+//   source: routes.private.user.opened,
+//   fn: (params) => params.params.userId,
+//   target: [userFeed.start, userByIdQuery.start],
+// });
 
-export const routeUserPage = chainRoute({
-  route: chainAuthorized(routes.private.user),
-  beforeOpen: getAllInfoById,
-});
+// export const routeUserPage = chainRoute({
+//   route: chainAuthorized(routes.private.user),
+//   beforeOpen: getAllInfoById,
+// });

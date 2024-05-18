@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { routes } from '@src/app/routes';
-import { $userData } from '@src/entities/user/api/query';
+import { userQuery } from '@src/entities/user/api/query';
 import { ActionsPost } from '@src/processes/actions_post';
 import { AddFriend } from '@src/processes/add_friend';
 import { CommentPost } from '@src/processes/comment_post';
@@ -24,7 +24,7 @@ import cs from './post.module.scss';
 
 export const Post = ({ firstName, lastName, userId, description, comments, likes, createdAt, _id }: Partial<IPost>) => {
   const [value, setValue] = React.useState('');
-  const { data: user, pending } = useUnit($userData);
+  const { data: user, pending } = useUnit(userQuery);
 
   if (pending) {
     return (
@@ -48,7 +48,7 @@ export const Post = ({ firstName, lastName, userId, description, comments, likes
           <Paragraph>{firstName + ' ' + lastName}</Paragraph>
           <Paragraph>{createdAt && formatDateTime(new Date(createdAt))}</Paragraph>
         </Flex>
-        {userId && <AddFriend id={Number(userId)} inFriends={user?.friends.includes(userId) as boolean} />}
+        {userId && <AddFriend id={userId} inFriends={user?.friends.includes(userId) as boolean} />}
         <Paragraph>{description}</Paragraph>
       </Container>
       <ActionsPost

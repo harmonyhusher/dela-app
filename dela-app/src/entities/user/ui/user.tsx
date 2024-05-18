@@ -9,11 +9,11 @@ import { Friends } from '@src/widgets/friends';
 import { IconMapPin } from '@tabler/icons-react';
 import { useUnit } from 'effector-react';
 
-import { $userData } from '../api/query';
+import { userQuery } from '../api/query';
 import cs from './user.module.scss';
 
 export const User = () => {
-  const { data: user, pending } = useUnit($userData);
+  const { data: user, pending } = useUnit(userQuery);
 
   return (
     <Container borders={user && user.friends.length > 0 ? Borders.Top : Borders.All} className={cs.container}>

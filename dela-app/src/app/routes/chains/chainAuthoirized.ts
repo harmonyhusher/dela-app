@@ -1,4 +1,4 @@
-import { $userData } from '@src/entities/user/api/query';
+import { userQuery } from '@src/entities/user/api/query';
 
 import { chainRoute, redirect, RouteInstance, RouteParams, RouteParamsAndQuery } from 'atomic-router';
 import { createEvent, sample } from 'effector';
@@ -27,8 +27,8 @@ export function chainAuthorized<Params extends RouteParams>(route: RouteInstance
 
   sample({
     clock: checkSessionStarted,
-    filter: or($isAuth, $userData.$succeeded),
-    target: $userData.start,
+    filter: not(userQuery.$succeeded),
+    target: userQuery.start,
   });
 
   return chainRoute({
