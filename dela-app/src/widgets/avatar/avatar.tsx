@@ -20,7 +20,7 @@ enum Variants {
   Small = 'small',
 }
 
-export const Avatar = ({ lastName, firstName, userId, variant, isLoading }: Props) => {
+export const Avatar = React.memo(({ lastName, firstName, userId, variant, isLoading }: Props) => {
   return (
     <Flex
       align={Align.Center}
@@ -38,4 +38,4 @@ export const Avatar = ({ lastName, firstName, userId, variant, isLoading }: Prop
       {lastName?.[0]}
     </Flex>
   );
-};
+});

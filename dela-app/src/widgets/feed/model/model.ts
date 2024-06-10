@@ -79,11 +79,6 @@ update(feedQuery, {
   },
 });
 
-// chainRoute({
-//   route: routes.private.feed,
-//   beforeOpen: getFeedFx,
-// });
-
 sample({
   clock: routes.private.feed.opened,
   target: getFeedFx,
