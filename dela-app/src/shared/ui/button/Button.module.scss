@@ -12,8 +12,18 @@
     font-weight: 500;
     font-size: 16px;
     transition: all 0.2s ease;
+    min-width: 360px;
 }
 
 .button:hover {
-    background-color: rgb(89, 89, 187);
+    background-color: rgb(74, 74, 156);
 }
+
+.button:disabled {
+    cursor: not-allowed;
+    background-color: rgb(150, 150, 150);
+    color: rgb(200, 200, 200);
+    color: black;
+    opacity: 0.6;
+}
+
