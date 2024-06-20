@@ -52,7 +52,7 @@ export const Form = () => {
             value={password}
           />
         </Flex>
-        <Button children={'Войти'} disabled={disabled} type="submit" />
+        <Button children={'Войти'} disabled={disabled} loading={false} type="submit" />
       </form>
     </Container>
   );

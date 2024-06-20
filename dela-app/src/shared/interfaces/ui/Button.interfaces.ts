@@ -3,11 +3,5 @@ export interface ButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  variant?: ButtonVariants;
-}
-
-export enum ButtonVariants {
-  Disabled = 'disabled',
-  Loading = 'loading',
-  Error = 'error',
+  loading?: boolean;
 }
