@@ -5,7 +5,10 @@
         height: min-content;
         display: flex;
         flex-direction: column;
-        border-radius: 14px;
         gap: 24px;
     }
+}
+
+.flex_mod {
+    gap: 12px;
 }

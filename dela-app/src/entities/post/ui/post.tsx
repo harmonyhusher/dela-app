@@ -4,7 +4,6 @@ import React from 'react';
 import { routes } from '@src/app/routes';
 import { userQuery } from '@src/entities/user/api/query';
 import { ActionsPost } from '@src/processes/actions_post';
-import { AddFriend } from '@src/processes/add_friend';
 import { CommentPost } from '@src/processes/comment_post';
 import { formatDateTime } from '@src/shared/helpers/formatDate';
 import { IPost } from '@src/shared/interfaces/entities/Post.interface';
@@ -48,13 +47,14 @@ export const Post = ({ firstName, lastName, userId, description, comments, likes
           <Paragraph>{firstName + ' ' + lastName}</Paragraph>
           <Paragraph>{createdAt && formatDateTime(new Date(createdAt))}</Paragraph>
         </Flex>
-        {userId && <AddFriend id={userId} inFriends={user?.friends.includes(userId) as boolean} />}
         <Paragraph>{description}</Paragraph>
       </Container>
       <ActionsPost
         amount={Object.keys(likes || {}).length}
         data={{ postId: _id as number, userId: String(user?._id) }}
+        inFriends={user?.friends.includes(userId as string) as boolean}
         isLiked={likes ? (user?._id !== undefined ? user?._id in likes : false) : false}
+        userId={userId as string}
       />
       <Comments comments={comments || []} />
       <CommentPost id={_id as number} set={setValue} value={value} />

@@ -26,7 +26,7 @@ export const register = createMutation({
     lastName: string;
     email: string;
     password: string;
-    friends: Pick<IUser, 'friends'>;
+    friends: any[];
   }) => {
     const response = api.post<{ token: string; user: IUser }>('/register', {
       firstName,

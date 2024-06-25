@@ -4,6 +4,8 @@ import { Direction } from '@src/shared/interfaces/ui/Flex.interfaces';
 import { Flex } from '@src/shared/ui/flex';
 import { Input } from '@src/shared/ui/input';
 
+import cs from './Form.module.scss';
+
 type Props = {
   onEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onPasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,7 +15,7 @@ type Props = {
 
 export const LoginMode = ({ onEmailChange, email, onPasswordChange, password }: Props) => {
   return (
-    <Flex direction={Direction.Column}>
+    <Flex className={cs.flex_mod} direction={Direction.Column}>
       <Input
         children={'Почта'}
         id="email"

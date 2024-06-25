@@ -10,13 +10,27 @@ import { useUnit } from 'effector-react';
 
 import { clickLike, ILike } from '../model/model';
 import cs from './actions_post.module.scss';
+import { AddFriend } from '@src/processes/add_friend';
 
-export const ActionsPost = ({ isLiked, data, amount }: { isLiked: boolean; data: ILike; amount: number }) => {
+export const ActionsPost = ({
+  isLiked,
+  data,
+  amount,
+  userId,
+  inFriends,
+}: {
+  inFriends: boolean;
+  userId: string;
+  isLiked: boolean;
+  data: ILike;
+  amount: number;
+}) => {
   const [click] = useUnit([clickLike]);
 
   return (
     <Container borders={Borders.NoRadius}>
-      <Flex align={Align.Center} justify={Justify.SpaceBetween}>
+      <Flex align={Align.Center}>
+        {userId && <AddFriend id={userId} inFriends={inFriends} />}
         {isLiked ? (
           <IconHeartFilled
             className={isLiked ? classNames(cs.like_button, cs.liked) : undefined}

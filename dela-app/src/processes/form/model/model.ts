@@ -1,10 +1,11 @@
-import { $isAuth, $token, tokenRecieved } from '@src/app/model';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { $token, tokenRecieved } from '@src/app/model';
 import { routes } from '@src/app/routes';
 import { IUser } from '@src/shared/interfaces/entities/User.interface';
 
 import { redirect } from 'atomic-router';
 import { createEvent, createStore, sample } from 'effector';
-import { and, condition, not, or } from 'patronum';
+import { or } from 'patronum';
 
 import { auth, register } from './api';
 
@@ -14,7 +15,7 @@ const $password = createStore<string>('');
 const $firstName = createStore<string>('');
 const $lastName = createStore<string>('');
 
-const $friends = createStore<Pick<IUser, 'friends'>>({ friends: [] });
+const $friends = createStore<any[]>([]);
 
 const $authMode = createStore<'login' | 'registration'>('login');
 
@@ -54,6 +55,12 @@ sample({
 });
 
 sample({
+  clock: register.finished.success,
+  fn: (clk) => clk.result.data.token,
+  target: tokenRecieved,
+});
+
+sample({
   clock: auth.finished.success,
   fn: (clk) => clk.result.data.token,
   target: tokenRecieved,
@@ -61,6 +68,11 @@ sample({
 
 redirect({
   clock: auth.$succeeded,
+  route: routes.private.feed,
+});
+
+redirect({
+  clock: register.$succeeded,
   route: routes.private.feed,
 });
 
